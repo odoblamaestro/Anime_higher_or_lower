@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Higher or Lower · Anime</title>
+  <meta name="description" content="Which anime is more popular? Guess whether it has more or fewer members or favorites and build a streak.">
+  <meta name="theme-color" content="#f7f3ee" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a1816" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Higher or Lower · Anime">
+  <meta property="og:description" content="Which anime is more popular? Build a streak and beat your best.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%A1%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <!-- Start -->
+    <section class="screen screen-start" id="screen-start">
+      <div class="start-inner">
+        <p class="eyebrow">Anime edition</p>
+        <h1 class="logo">Higher <span>or</span> Lower</h1>
+        <p class="tagline">Which one is more popular? Guess and build a streak.</p>
+        <div class="modes" id="mode-list"></div>
+        <p class="status" id="status" role="status"></p>
+      </div>
+    </section>
+
+    <!-- Game -->
+    <section class="screen screen-game" id="screen-game" hidden>
+      <header class="hud">
+        <button class="icon-btn" id="btn-menu" type="button" aria-label="Back to menu">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <p class="hud-mode" id="hud-mode"></p>
+        <div class="hud-stats">
+          <div class="stat">
+            <span class="stat-label">Streak</span>
+            <span class="stat-value" id="hud-score">0</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Best</span>
+            <span class="stat-value" id="hud-best">0</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="stage" id="stage">
+        <div class="vs" id="vs" aria-hidden="true">
+          <span class="vs-text">VS</span>
+          <svg class="vs-icon vs-icon-correct" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          <svg class="vs-icon vs-icon-wrong" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </div>
+      </div>
+      <p class="sr-only" id="announcer" aria-live="polite"></p>
+    </section>
+
+    <footer class="footer">
+      Data from <a href="https://anilist.co" target="_blank" rel="noopener">AniList</a>
+    </footer>
+  </div>
+
+  <!-- Game over -->
+  <div class="overlay" id="gameover" hidden>
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="go-title">
+      <p class="go-title" id="go-title">Game over</p>
+      <p class="go-score" id="go-score">0</p>
+      <p class="go-label" id="go-label">in a row</p>
+      <p class="go-best" id="go-best"></p>
+      <p class="go-detail" id="go-detail"></p>
+      <div class="go-actions">
+        <button class="btn btn-primary" id="btn-again" type="button">Play again</button>
+        <button class="btn btn-secondary" id="btn-share" type="button">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/></svg>
+          Share result
+        </button>
+        <button class="btn btn-text" id="btn-modes" type="button">Change mode</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

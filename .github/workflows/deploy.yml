@@ -1,0 +1,41 @@
+# Publica la web en GitHub Pages.
+# Requiere Settings → Pages → Build and deployment → Source: "GitHub Actions".
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  # La llama update-data.yml tras subir datos nuevos: los push hechos con
+  # GITHUB_TOKEN no disparan otros workflows, así que no basta con el trigger "push".
+  workflow_call:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          # Rama, no commit: cuando lo llama update-data.yml, incluye el commit de datos recién subido.
+          ref: main
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: .
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

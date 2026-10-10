@@ -1,0 +1,57 @@
+# Actualiza los datos de AniList cada semana (o a mano desde la pestaña Actions)
+# y vuelve a publicar la web si han cambiado.
+name: Update AniList data
+
+on:
+  schedule:
+    # Lunes a las 00:07 UTC, justo después del cambio de día del modo diario.
+    - cron: "7 0 * * 1"
+  workflow_dispatch:
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Fetch anime
+        run: python scripts/fetch_anime.py
+
+      - name: Fetch characters
+        run: python scripts/fetch_characters.py
+
+      - name: Commit if data changed
+        id: commit
+        run: |
+          if [ -z "$(git status --porcelain -- data/anime.json data/characters.json)" ]; then
+            echo "Sin cambios en los datos."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/anime.json data/characters.json
+          git commit -m "Update AniList data"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+  deploy:
+    needs: update
+    if: needs.update.outputs.changed == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/deploy.yml

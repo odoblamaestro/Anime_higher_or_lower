@@ -12,6 +12,8 @@
   --bad: #d9534a;
   --tint-strong: 22%;
   --tint-soft: 7%;
+  --mosaic-opacity: 0.6;
+  --mosaic-blur: 3px;
 
   --shadow-sm: 0 1px 2px rgba(80, 55, 30, 0.06), 0 2px 8px rgba(80, 55, 30, 0.06);
   --shadow: 0 1px 2px rgba(80, 55, 30, 0.05), 0 10px 30px rgba(80, 55, 30, 0.09);
@@ -39,6 +41,7 @@
     --bad: #f0675e;
     --tint-strong: 24%;
     --tint-soft: 9%;
+    --mosaic-opacity: 0.45;
 
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2);
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -119,10 +122,12 @@ a:focus-visible {
 .screen-start {
   align-items: center;
   justify-content: center;
-  padding: 48px 16px 24px;
+  padding: 36px 16px 20px;
 }
 
 .start-inner {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 420px;
   text-align: center;
@@ -138,22 +143,54 @@ a:focus-visible {
   color: var(--accent);
 }
 
+/* Bloque de título: game.js ajusta cada línea para que las tres midan lo mismo
+   (HIGHER y LOWER por tamaño de fuente; OR entre dos líneas finas que ocupan el resto).
+   Estos tamaños son el respaldo. */
 .logo {
+  --logo-width: 300;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 0;
-  font-size: clamp(44px, 13vw, 60px);
   font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1;
+  line-height: 0.9;
+  letter-spacing: 0;
 }
 
-.logo span {
-  font-weight: 500;
+.logo-line {
+  display: block;
+  font-size: 68px;
+  white-space: nowrap;
+}
+
+.logo-or {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  width: 300px;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   color: var(--ink-3);
+}
+
+.logo-or::before,
+.logo-or::after {
+  content: "";
+  flex: 1;
+  height: 0.09em;
+  border-radius: 1em;
+  background: currentColor;
+  opacity: 0.55;
+}
+
+.logo-or::after {
+  margin-left: -0.08em; /* compensa el tracking tras la R */
 }
 
 .tagline {
   max-width: 28ch;
-  margin: 18px auto 40px;
+  margin: 18px auto 32px;
   font-size: 17px;
   line-height: 1.45;
   color: var(--ink-2);
@@ -242,6 +279,85 @@ a:focus-visible {
   font-size: 20px;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
+}
+
+.mode-btn-daily {
+  box-shadow: var(--shadow), inset 0 0 0 1.5px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.mode-btn-daily .mode-icon {
+  background: var(--accent);
+  color: #fff;
+}
+
+.mode-best-value.is-small {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Mosaico de portadas de fondo (solo en la pantalla de inicio) */
+.mosaic {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.mosaic.is-ready {
+  opacity: 1;
+}
+
+.mosaic-track {
+  position: absolute;
+  inset: -40px -20px; /* margen para que el blur no deje bordes claros */
+  display: flex;
+  gap: 12px;
+  opacity: var(--mosaic-opacity);
+  filter: blur(var(--mosaic-blur)); /* un único blur para todo el mosaico */
+}
+
+.mosaic-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.mosaic-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: mosaic-scroll var(--duration, 140s) linear infinite;
+  will-change: transform;
+}
+
+.mosaic-col:nth-child(even) .mosaic-strip {
+  animation-direction: reverse;
+}
+
+.mosaic-tile {
+  aspect-ratio: 2 / 3;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--tile, var(--fill));
+}
+
+.mosaic-tile img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Degradado del color de fondo por encima: el contenido central siempre se lee bien */
+.mosaic::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 75% 60% at 50% 50%, color-mix(in srgb, var(--bg) 82%, transparent) 0%, color-mix(in srgb, var(--bg) 40%, transparent) 100%),
+    linear-gradient(180deg, color-mix(in srgb, var(--bg) 20%, transparent) 0%, color-mix(in srgb, var(--bg) 55%, transparent) 50%, color-mix(in srgb, var(--bg) 85%, transparent) 100%);
 }
 
 .status {
@@ -436,6 +552,9 @@ a:focus-visible {
 
 .year {
   margin: 4px 0 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   font-size: 13px;
   font-variant-numeric: tabular-nums;
   color: var(--ink-3);
@@ -657,6 +776,14 @@ a:focus-visible {
   color: var(--ink-2);
 }
 
+.go-emoji {
+  margin: 14px 0 0;
+  font-size: 18px;
+  line-height: 1.4;
+  letter-spacing: 2px;
+  white-space: pre-line;
+}
+
 .go-best {
   display: inline-block;
   margin: 18px 0 0;
@@ -753,6 +880,8 @@ a:focus-visible {
 
 /* ---------- Pie ---------- */
 .footer {
+  position: relative;
+  z-index: 1;
   flex: none;
   padding: 6px 16px calc(10px + env(safe-area-inset-bottom));
   font-size: 12px;
@@ -772,6 +901,11 @@ a:focus-visible {
   100% { transform: scale(1); }
 }
 
+@keyframes mosaic-scroll {
+  /* El contenido está duplicado: desplazar una copia exacta (mitad + medio hueco) hace el bucle continuo */
+  to { transform: translateY(calc(-50% - 6px)); }
+}
+
 @keyframes fade {
   from { opacity: 0; }
 }
@@ -786,6 +920,10 @@ a:focus-visible {
 
 /* ---------- Pantallas bajas (móviles pequeños) ---------- */
 @media (max-height: 720px) {
+  .screen-start { padding-top: 24px; }
+  .logo { --logo-width: 240; }
+  .tagline { margin: 14px auto 22px; font-size: 16px; }
+  .mode-btn { min-height: 72px; padding: 14px 18px; }
   .hud { height: 54px; }
   .card { padding: 14px; gap: 14px; }
   .title { -webkit-line-clamp: 2; }
@@ -898,5 +1036,9 @@ a:focus-visible {
   *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.12s !important;
+  }
+
+  .mosaic-strip {
+    animation: none !important;
   }
 }

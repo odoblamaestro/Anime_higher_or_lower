@@ -18,9 +18,14 @@
   <div class="app">
     <!-- Start -->
     <section class="screen screen-start" id="screen-start">
+      <div class="mosaic" id="mosaic" aria-hidden="true"></div>
       <div class="start-inner">
         <p class="eyebrow">Anime edition</p>
-        <h1 class="logo">Higher <span>or</span> Lower</h1>
+        <h1 class="logo" id="logo" aria-label="Higher or Lower">
+          <span class="logo-line" data-fit="size" aria-hidden="true">HIGHER</span>
+          <span class="logo-line logo-or" data-fit="rule" aria-hidden="true">OR</span>
+          <span class="logo-line" data-fit="size" aria-hidden="true">LOWER</span>
+        </h1>
         <p class="tagline">Which one is more popular? Guess and build a streak.</p>
         <div class="modes" id="mode-list"></div>
         <p class="status" id="status" role="status"></p>
@@ -67,6 +72,7 @@
       <p class="go-title" id="go-title">Game over</p>
       <p class="go-score" id="go-score">0</p>
       <p class="go-label" id="go-label">in a row</p>
+      <p class="go-emoji" id="go-emoji" hidden></p>
       <p class="go-best" id="go-best"></p>
       <p class="go-detail" id="go-detail"></p>
       <div class="go-actions">

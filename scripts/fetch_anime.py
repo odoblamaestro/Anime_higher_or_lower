@@ -15,6 +15,7 @@ PER_PAGE = 50
 MAX_PAGES = 20  # 20 x 50 = top 1000 por popularidad
 REQUEST_DELAY = 2.0  # segundos entre peticiones, margen sobre el rate limit
 OUTPUT = Path(__file__).resolve().parent.parent / "data" / "anime.json"
+MIN_RESULTS = 800  # si llegan menos, algo ha fallado: no se sobrescribe el JSON
 ALLOWED_FORMATS = {"TV", "TV_SHORT", "MOVIE", "ONA", "OVA"}
 
 QUERY = """
@@ -24,7 +25,7 @@ query ($page: Int, $perPage: Int) {
     media(type: ANIME, sort: POPULARITY_DESC, isAdult: false) {
       id
       title { romaji english }
-      coverImage { extraLarge color }
+      coverImage { extraLarge medium color }
       format
       seasonYear
       popularity
@@ -69,6 +70,7 @@ def normalize(media: dict) -> dict:
         "title": title["english"] or title["romaji"],
         "romaji": title["romaji"],
         "image": media["coverImage"]["extraLarge"],
+        "thumb": media["coverImage"]["medium"],  # miniatura ligera para el mosaico de la portada
         "color": media["coverImage"]["color"],
         "year": media["seasonYear"],
         "members": media["popularity"],      # usuarios que lo tienen en su lista
@@ -91,6 +93,8 @@ def main() -> None:
         time.sleep(REQUEST_DELAY)
 
     result = sorted(animes.values(), key=lambda a: a["members"], reverse=True)
+    if len(result) < MIN_RESULTS:
+        raise SystemExit(f"Solo se obtuvieron {len(result)} animes; no se sobrescribe {OUTPUT}")
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(
         json.dumps(result, ensure_ascii=False, separators=(",", ":")),

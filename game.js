@@ -96,6 +96,7 @@
   const TIMING = { count: 1000, verdict: 550, slide: 600, gameOver: 950, firstImages: 2500 };
   const FALLBACK_TINT = '#c9b8a3';
   const SHARE_TITLE = 'Higher or Lower · Anime';
+  const SITE_URL = 'https://higherloweranime.com/';
 
   /* ---------- Utilidades ---------- */
   const $ = (id) => document.getElementById(id);
@@ -166,6 +167,17 @@
   function getBest(mode) {
     const n = parseInt(store.get(bestKey(mode)), 10);
     return Number.isFinite(n) && n > 0 ? n : 0;
+  }
+
+  /* ---------- Analítica (Umami) ----------
+   * Si el script no ha cargado (adblocker, sin conexión, localhost) no hace nada.
+   * Solo se registran unos pocos eventos por partida, nunca cada ronda. */
+  function track(event, data) {
+    try {
+      if (window.umami && typeof window.umami.track === 'function') window.umami.track(event, data);
+    } catch {
+      /* la analítica nunca debe romper el juego */
+    }
   }
 
   /* ---------- Modo diario ---------- */
@@ -608,6 +620,7 @@
     state.busy = false;
     // El intento cuenta desde que empieza: salir o recargar no permite repetir.
     persistDaily(false);
+    track('game_start', { mode: mode.id });
   }
 
   function persistDaily(finished, detail = '') {
@@ -710,6 +723,8 @@
   function showGameOver(completed) {
     const { mode, score } = state;
 
+    track('game_over', { mode: mode.id, score });
+
     if (mode.daily) {
       const detail = completed ? '' : missDetail();
       persistDaily(true, detail);
@@ -782,7 +797,8 @@
   async function share() {
     const data = state.shareData;
     if (!data) return;
-    const url = window.location.href.split(/[?#]/)[0];
+    const url = SITE_URL;
+    track('share_click', { mode: data.daily ? DAILY_MODE.id : data.mode.id });
 
     let payload;
     let fullText;

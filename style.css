@@ -198,6 +198,7 @@ a:focus-visible {
 
 .modes {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 12px;
 }
 
@@ -361,10 +362,13 @@ a:focus-visible {
 }
 
 .status {
-  min-height: 1.4em;
   margin: 20px 0 0;
   font-size: 14px;
   color: var(--ink-2);
+}
+
+.status:empty {
+  display: none;
 }
 
 /* ---------- Partida ---------- */
@@ -894,6 +898,93 @@ a:focus-visible {
   text-underline-offset: 2px;
 }
 
+.footer span {
+  margin: 0 4px;
+}
+
+/* ---------- Página de privacidad ---------- */
+.page {
+  flex: 1;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px 16px 40px;
+}
+
+.page-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 28px;
+  padding: 8px 14px 8px 10px;
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  color: var(--ink-2);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.page h1 {
+  margin: 0 0 6px;
+  font-size: clamp(32px, 9vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.page-updated {
+  margin: 0 0 28px;
+  font-size: 14px;
+  color: var(--ink-3);
+}
+
+.page-card {
+  margin: 0 0 14px;
+  padding: 22px 22px 6px;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow), inset 0 0 0 1px var(--line);
+}
+
+.page h2 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.page p,
+.page li {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.page p {
+  margin: 0 0 16px;
+}
+
+.page ul {
+  margin: 0 0 16px;
+  padding-left: 20px;
+}
+
+.page li + li {
+  margin-top: 6px;
+}
+
+.page strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.page a {
+  color: var(--accent);
+  text-underline-offset: 2px;
+}
+
 /* ---------- Animaciones ---------- */
 @keyframes pop {
   0% { transform: scale(1); }
@@ -920,10 +1011,15 @@ a:focus-visible {
 
 /* ---------- Pantallas bajas (móviles pequeños) ---------- */
 @media (max-height: 720px) {
-  .screen-start { padding-top: 24px; }
-  .logo { --logo-width: 240; }
-  .tagline { margin: 14px auto 22px; font-size: 16px; }
-  .mode-btn { min-height: 72px; padding: 14px 18px; }
+  .screen-start { padding: 16px 16px 12px; }
+  .eyebrow { margin-bottom: 8px; font-size: 12px; }
+  .logo { --logo-width: 220; }
+  .tagline { margin: 12px auto 18px; font-size: 15px; }
+  .modes { gap: 10px; }
+  .mode-btn { min-height: 0; gap: 14px; padding: 12px 16px; }
+  .mode-icon { width: 40px; height: 40px; border-radius: 13px; }
+  .mode-title { font-size: 17px; }
+  .mode-desc { font-size: 13px; line-height: 1.3; }
   .hud { height: 54px; }
   .card { padding: 14px; gap: 14px; }
   .title { -webkit-line-clamp: 2; }
@@ -1007,6 +1103,13 @@ a:focus-visible {
     padding-bottom: 24px;
     border-radius: var(--r-xl);
   }
+}
+
+/* Pantallas muy bajas: descripciones de los modos en una sola línea */
+@media (max-height: 600px) {
+  .logo { --logo-width: 190; }
+  .tagline { margin: 8px auto 14px; }
+  .mode-desc { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 }
 
 @media (min-width: 760px) and (orientation: landscape) and (max-height: 560px) {

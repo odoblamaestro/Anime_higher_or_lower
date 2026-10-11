@@ -86,6 +86,67 @@
       <p class="sr-only" id="announcer" aria-live="polite"></p>
     </section>
 
+    <!-- Hair Color -->
+    <section class="screen screen-hair" id="screen-hair" hidden>
+      <header class="hud">
+        <button class="icon-btn" id="hair-menu" type="button" aria-label="Back to menu">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <p class="hud-mode" id="hair-title"></p>
+      </header>
+
+      <div class="hair-stage">
+        <div class="hair-who">
+          <h2 class="title" id="hair-name"></h2>
+          <p class="year" id="hair-anime"></p>
+        </div>
+        <figure class="hair-figure">
+          <canvas class="hair-canvas" id="hair-canvas" role="img" aria-label="Character whose hair you paint"></canvas>
+          <p class="hair-hint" id="hair-hint">Move the sliders to paint the hair</p>
+        </figure>
+        <div class="hair-panel">
+          <div class="hair-controls" id="hair-controls">
+            <label class="slider">
+              <span class="slider-label">Hue</span>
+              <input type="range" id="hair-hue" min="0" max="359" step="1" value="40">
+            </label>
+            <label class="slider">
+              <span class="slider-label">Saturation</span>
+              <input type="range" id="hair-sat" min="0" max="100" step="1" value="50">
+            </label>
+            <label class="slider">
+              <span class="slider-label">Lightness</span>
+              <input type="range" id="hair-light" min="2" max="98" step="1" value="50">
+            </label>
+            <button class="btn btn-primary" id="hair-confirm" type="button" disabled>Confirm</button>
+          </div>
+
+          <div class="hair-result" id="hair-result" hidden>
+            <div class="hair-summary">
+              <p class="hair-score"><span id="hair-score">0</span><span class="hair-pct">%</span></p>
+              <div class="hair-swatch">
+                <span class="swatch" id="hair-sw-guess"></span>
+                <span class="swatch-label">You</span>
+              </div>
+              <div class="hair-swatch">
+                <span class="swatch" id="hair-sw-real"></span>
+                <span class="swatch-label">Real</span>
+              </div>
+            </div>
+            <p class="hair-detail" id="hair-detail"></p>
+            <div class="hair-actions">
+              <button class="btn btn-primary" id="hair-next" type="button">Next character</button>
+              <button class="btn btn-secondary" id="hair-share" type="button">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/></svg>
+                Share
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="sr-only" id="hair-announcer" aria-live="polite"></p>
+    </section>
+
     <footer class="footer">
       Data from <a href="https://anilist.co" target="_blank" rel="noopener">AniList</a>
       <span aria-hidden="true">·</span>

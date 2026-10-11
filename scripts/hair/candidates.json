@@ -1,0 +1,2382 @@
+[
+ {
+  "id": 127691,
+  "name": "Satoru Gojou",
+  "anime": "JUJUTSU KAISEN",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b127691-9zqh1xpIubn7.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#55a1cd",
+  "lab": [
+   63.1,
+   -10.3,
+   -29.9
+  ],
+  "coverage": 0.116,
+  "status": "rejected"
+ },
+ {
+  "id": 45627,
+  "name": "Levi",
+  "anime": "Attack on Titan",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b45627-CR68RyZmddGG.png",
+  "mask": "scripts/hair/masks/45627.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#3b2e27",
+  "lab": [
+   20.1,
+   4.8,
+   6.7
+  ],
+  "coverage": 0.326,
+  "status": "approved"
+ },
+ {
+  "id": 27,
+  "name": "Killua Zoldyck",
+  "anime": "Hunter x Hunter (2011)",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b27-Z5O02kQUydpT.jpg",
+  "mask": "scripts/hair/masks/27.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#f7edf5",
+  "lab": [
+   94.7,
+   4.7,
+   -2.7
+  ],
+  "coverage": 0.324,
+  "status": "approved"
+ },
+ {
+  "id": 40882,
+  "name": "Eren Yeager",
+  "anime": "Attack on Titan",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b40882-dsj7IP943WFF.jpg",
+  "mask": "scripts/hair/masks/40882.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#28211e",
+  "lab": [
+   13.4,
+   2.8,
+   3.3
+  ],
+  "coverage": 0.315,
+  "status": "approved"
+ },
+ {
+  "id": 62,
+  "name": "Zoro Roronoa",
+  "anime": "ONE PIECE",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b62-S7oAeA9WInjV.png",
+  "mask": "scripts/hair/masks/62.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#8dc498",
+  "lab": [
+   74.5,
+   -26.9,
+   16.5
+  ],
+  "coverage": 0.128,
+  "status": "approved"
+ },
+ {
+  "id": 417,
+  "name": "Lelouch Lamperouge",
+  "anime": "Code Geass: Lelouch of the Rebellion",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b417-gVLmIJu9phcK.png",
+  "mask": "scripts/hair/masks/417.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#221816",
+  "lab": [
+   9.3,
+   4.7,
+   2.8
+  ],
+  "coverage": 0.409,
+  "status": "approved"
+ },
+ {
+  "id": 88572,
+  "name": "Emilia",
+  "anime": "Re:ZERO -Starting Life in Another World-",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b88572-IzTwXEHSobRs.jpg",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#af9bbc",
+  "lab": [
+   66.6,
+   13.8,
+   -14.6
+  ],
+  "coverage": 0.372,
+  "status": "rejected"
+ },
+ {
+  "id": 71,
+  "name": "L Lawliet",
+  "anime": "Death Note",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b71-1W4panC53vfs.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#1e201d",
+  "lab": [
+   11.9,
+   -1.4,
+   1.4
+  ],
+  "coverage": 0.292,
+  "status": "rejected"
+ },
+ {
+  "id": 87275,
+  "name": "Ken Kaneki",
+  "anime": "Tokyo Ghoul",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b87275-mb13EWZBdbh3.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#dad7de",
+  "lab": [
+   86.4,
+   2.3,
+   -3.0
+  ],
+  "coverage": 0.324,
+  "status": "rejected"
+ },
+ {
+  "id": 40881,
+  "name": "Mikasa Ackerman",
+  "anime": "Attack on Titan",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b40881-F3gr1PkreDvj.png",
+  "mask": "scripts/hair/masks/40881.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#171718",
+  "lab": [
+   7.7,
+   0.2,
+   -0.6
+  ],
+  "coverage": 0.403,
+  "status": "approved"
+ },
+ {
+  "id": 422,
+  "name": "Guts",
+  "anime": "Berserk",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b422-XTaiTuvRohsV.png",
+  "mask": "scripts/hair/masks/422.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#1e1a19",
+  "lab": [
+   9.8,
+   1.2,
+   1.5
+  ],
+  "coverage": 0.199,
+  "status": "approved"
+ },
+ {
+  "id": 126824,
+  "name": "Maomao",
+  "anime": "The Apothecary Diaries",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b126824-MqsCncTO1qpv.png",
+  "mask": "scripts/hair/masks/126824.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#0e2233",
+  "lab": [
+   12.5,
+   -1.6,
+   -13.5
+  ],
+  "coverage": 0.232,
+  "status": "approved"
+ },
+ {
+  "id": 176754,
+  "name": "Frieren",
+  "anime": "Frieren: Beyond Journey’s End",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b176754-PCnpqIOkjhFk.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#f8edd3",
+  "lab": [
+   94.0,
+   -0.7,
+   13.8
+  ],
+  "coverage": 0.116,
+  "status": "rejected"
+ },
+ {
+  "id": 34470,
+  "name": "Kurisu Makise",
+  "anime": "Steins;Gate",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b34470-Jw2LXZBL5R8i.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#4a3219",
+  "lab": [
+   23.2,
+   7.5,
+   20.5
+  ],
+  "coverage": 0.478,
+  "status": "rejected"
+ },
+ {
+  "id": 10138,
+  "name": "Thorfinn Karlsefni",
+  "anime": "Vinland Saga",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b10138-zOPrka0ddZOR.png",
+  "mask": "scripts/hair/masks/10138.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#e1b78d",
+  "lab": [
+   77.2,
+   9.5,
+   27.4
+  ],
+  "coverage": 0.306,
+  "status": "approved"
+ },
+ {
+  "id": 137080,
+  "name": "Makima",
+  "anime": "Chainsaw Man",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b137080-UHcynYNjb5ZU.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#e54051",
+  "lab": [
+   52.9,
+   63.6,
+   28.8
+  ],
+  "coverage": 0.339,
+  "status": "rejected"
+ },
+ {
+  "id": 14,
+  "name": "Itachi Uchiha",
+  "anime": "Naruto",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b14-9Kb1E5oel1ke.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#2b2628",
+  "lab": [
+   15.8,
+   2.7,
+   -0.7
+  ],
+  "coverage": 0.266,
+  "status": "rejected"
+ },
+ {
+  "id": 35252,
+  "name": "Rintarou Okabe",
+  "anime": "Steins;Gate",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b35252-DY9TW6pusqeh.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#353a22",
+  "lab": [
+   23.2,
+   -6.9,
+   14.2
+  ],
+  "coverage": 0.232,
+  "status": "rejected"
+ },
+ {
+  "id": 127222,
+  "name": "Mai Sakurajima",
+  "anime": "Rascal Does Not Dream of Bunny Girl Senpai",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b127222-Jh5hhP7vZ7s1.png",
+  "mask": "scripts/hair/masks/127222.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#73737b",
+  "lab": [
+   48.8,
+   1.7,
+   -4.2
+  ],
+  "coverage": 0.328,
+  "status": "approved"
+ },
+ {
+  "id": 127212,
+  "name": "Yuuji Itadori",
+  "anime": "JUJUTSU KAISEN",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b127212-FVm2tD0erQ5B.png",
+  "mask": "scripts/hair/masks/127212.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#e2b9a0",
+  "lab": [
+   78.1,
+   11.1,
+   18.0
+  ],
+  "coverage": 0.208,
+  "status": "approved"
+ },
+ {
+  "id": 130102,
+  "name": "Denji",
+  "anime": "Chainsaw Man",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b130102-FO1VHNnEnLlB.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#e68129",
+  "lab": [
+   63.9,
+   33.0,
+   60.6
+  ],
+  "coverage": 0.176,
+  "status": "rejected"
+ },
+ {
+  "id": 28,
+  "name": "Kurapika",
+  "anime": "Hunter x Hunter (2011)",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b28-ivA7UGnfE40a.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#b8a85b",
+  "lab": [
+   68.7,
+   -4.4,
+   41.7
+  ],
+  "coverage": 0.4,
+  "status": "rejected"
+ },
+ {
+  "id": 89616,
+  "name": "Shigeo Kageyama",
+  "anime": "Mob Psycho 100",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b89616-dXmdOc7L6SDi.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#0f1110",
+  "lab": [
+   4.9,
+   -0.9,
+   0.3
+  ],
+  "coverage": 0.165,
+  "status": "rejected"
+ },
+ {
+  "id": 120649,
+  "name": "Kaguya Shinomiya",
+  "anime": "Kaguya-sama: Love is War",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b120649-NPaWaIpWy60E.png",
+  "mask": "scripts/hair/masks/120649.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#241112",
+  "lab": [
+   7.5,
+   9.8,
+   3.3
+  ],
+  "coverage": 0.355,
+  "status": "approved"
+ },
+ {
+  "id": 137079,
+  "name": "Power",
+  "anime": "Chainsaw Man",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b137079-6yLEUYR3bmpr.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#e1a8a7",
+  "lab": [
+   73.9,
+   21.0,
+   8.4
+  ],
+  "coverage": 0.338,
+  "status": "rejected"
+ },
+ {
+  "id": 85,
+  "name": "Kakashi Hatake",
+  "anime": "Naruto",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b85-mkVBh2yjxjmx.png",
+  "mask": "scripts/hair/masks/85.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#f4eaef",
+  "lab": [
+   93.7,
+   4.1,
+   -1.2
+  ],
+  "coverage": 0.118,
+  "status": "approved"
+ },
+ {
+  "id": 90169,
+  "name": "Violet Evergarden",
+  "anime": "Violet Evergarden",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b90169-4wr1Zehnsac8.png",
+  "mask": "scripts/hair/masks/90169.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#ddbab0",
+  "lab": [
+   78.3,
+   11.2,
+   9.6
+  ],
+  "coverage": 0.487,
+  "status": "approved"
+ },
+ {
+  "id": 80,
+  "name": "Light Yagami",
+  "anime": "Death Note",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b80-26EhwSsSqQ50.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#1a0f04",
+  "lab": [
+   5.0,
+   3.1,
+   6.0
+  ],
+  "coverage": 0.271,
+  "status": "rejected"
+ },
+ {
+  "id": 11,
+  "name": "Edward Elric",
+  "anime": "Fullmetal Alchemist: Brotherhood",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b11-TA5Nuk7EDUZG.jpg",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#dab64f",
+  "lab": [
+   75.4,
+   1.8,
+   55.6
+  ],
+  "coverage": 0.026,
+  "status": "rejected"
+ },
+ {
+  "id": 126071,
+  "name": "Tanjirou Kamado",
+  "anime": "Demon Slayer: Kimetsu no Yaiba",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b126071-BTNEc1nRIv68.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#000000",
+  "lab": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "coverage": 0.184,
+  "status": "rejected"
+ },
+ {
+  "id": 500,
+  "name": "Sakura Matou",
+  "anime": "Fate/Zero",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b500-NQrLbnBr1sDv.png",
+  "mask": "scripts/hair/masks/500.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#86508e",
+  "lab": [
+   42.4,
+   33.0,
+   -25.4
+  ],
+  "coverage": 0.505,
+  "status": "approved"
+ },
+ {
+  "id": 133676,
+  "name": "Marin Kitagawa",
+  "anime": "My Dress-Up Darling",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b133676-kV2czE3C8Qls.png",
+  "mask": "scripts/hair/masks/133676.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#edc6af",
+  "lab": [
+   82.6,
+   10.5,
+   16.6
+  ],
+  "coverage": 0.557,
+  "status": "approved"
+ },
+ {
+  "id": 126635,
+  "name": "Megumi Fushiguro",
+  "anime": "JUJUTSU KAISEN",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b126635-L0y3I92JSUkN.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#030000",
+  "lab": [
+   0.2,
+   0.8,
+   0.3
+  ],
+  "coverage": 0.233,
+  "status": "rejected"
+ },
+ {
+  "id": 6356,
+  "name": "Joseph Joestar",
+  "anime": "JoJo's Bizarre Adventure (TV)",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b6356-RImEfUfHpC58.png",
+  "mask": null,
+  "width": 230,
+  "height": 350,
+  "hex": "#8d1061",
+  "lab": [
+   31.6,
+   54.6,
+   -13.7
+  ],
+  "coverage": 0.012,
+  "status": "rejected"
+ },
+ {
+  "id": 89220,
+  "name": "Shouto Todoroki",
+  "anime": "My Hero Academia",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b89220-KNBwaVFAR8FD.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#ebedec",
+  "lab": [
+   93.5,
+   -0.8,
+   0.2
+  ],
+  "coverage": 0.3,
+  "status": "rejected"
+ },
+ {
+  "id": 89361,
+  "name": "Megumin",
+  "anime": "KONOSUBA -God's blessing on this wonderful world!",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b89361-tq8PQQ4MmF0M.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#483b3b",
+  "lab": [
+   26.2,
+   5.7,
+   2.0
+  ],
+  "coverage": 0.108,
+  "status": "rejected"
+ },
+ {
+  "id": 13020,
+  "name": "Askeladd",
+  "anime": "Vinland Saga",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b13020-ZdiYlNmpRUNS.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#9b7865",
+  "lab": [
+   53.4,
+   10.7,
+   15.8
+  ],
+  "coverage": 0.136,
+  "status": "rejected"
+ },
+ {
+  "id": 88575,
+  "name": "Rem",
+  "anime": "Re:ZERO -Starting Life in Another World-",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b88575-Ayu8UPDA8NS6.png",
+  "mask": "scripts/hair/masks/88575.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#a0bcf2",
+  "lab": [
+   75.9,
+   3.6,
+   -30.2
+  ],
+  "coverage": 0.3,
+  "status": "approved"
+ },
+ {
+  "id": 89198,
+  "name": "Osamu Dazai",
+  "anime": "Bungo Stray Dogs",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b89198-qKmRTw4Y3PRC.png",
+  "mask": "scripts/hair/masks/89198.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#413b31",
+  "lab": [
+   25.2,
+   0.9,
+   7.1
+  ],
+  "coverage": 0.344,
+  "status": "approved"
+ },
+ {
+  "id": 88892,
+  "name": "Katsuki Bakugou",
+  "anime": "My Hero Academia",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b88892-bdOha3lNcaN6.png",
+  "mask": "scripts/hair/masks/88892.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#8b6863",
+  "lab": [
+   47.4,
+   13.0,
+   8.4
+  ],
+  "coverage": 0.36,
+  "status": "approved"
+ },
+ {
+  "id": 121103,
+  "name": "Chika Fujiwara",
+  "anime": "Kaguya-sama: Love is War",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b121103-UGLxT8utLPnq.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#e3cbdc",
+  "lab": [
+   84.0,
+   11.4,
+   -5.7
+  ],
+  "coverage": 0.327,
+  "status": "rejected"
+ },
+ {
+  "id": 126375,
+  "name": "Itsuki Nakano",
+  "anime": "The Quintessential Quintuplets",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b126375-dEe9IyQ9By09.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#d93e31",
+  "lab": [
+   50.0,
+   59.5,
+   43.1
+  ],
+  "coverage": 0.255,
+  "status": "rejected"
+ },
+ {
+  "id": 672,
+  "name": "Gintoki Sakata",
+  "anime": "Gintama",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b672-cP5VPriN67xJ.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#c9e3ea",
+  "lab": [
+   88.6,
+   -7.0,
+   -6.3
+  ],
+  "coverage": 0.304,
+  "status": "rejected"
+ },
+ {
+  "id": 124382,
+  "name": "Ichigo",
+  "anime": "DARLING in the FRANXX",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b124382-bSBkjtYjJQtr.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#2b4260",
+  "lab": [
+   27.4,
+   0.6,
+   -20.4
+  ],
+  "coverage": 0.395,
+  "status": "rejected"
+ },
+ {
+  "id": 123212,
+  "name": "Kiyotaka Ayanokouji",
+  "anime": "Classroom of the Elite",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b123212-ewZgUQr9vvEM.png",
+  "mask": "scripts/hair/masks/123212.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#957077",
+  "lab": [
+   50.9,
+   15.8,
+   1.8
+  ],
+  "coverage": 0.193,
+  "status": "approved"
+ },
+ {
+  "id": 88573,
+  "name": "Subaru Natsuki",
+  "anime": "Re:ZERO -Starting Life in Another World-",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b88573-F8yMTK9GhnTA.png",
+  "mask": "scripts/hair/masks/88573.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#7b6a5f",
+  "lab": [
+   46.1,
+   5.1,
+   8.7
+  ],
+  "coverage": 0.261,
+  "status": "approved"
+ },
+ {
+  "id": 124142,
+  "name": "Senkuu Ishigami",
+  "anime": "Dr. STONE",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b124142-XUO1g7wRqkaT.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#dcdbc6",
+  "lab": [
+   87.1,
+   -3.5,
+   10.8
+  ],
+  "coverage": 0.295,
+  "status": "rejected"
+ },
+ {
+  "id": 30,
+  "name": "Gon Freecss",
+  "anime": "Hunter x Hunter (2011)",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b30-lyFExKyDhefc.jpg",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#080e0e",
+  "lab": [
+   3.7,
+   -1.8,
+   -0.6
+  ],
+  "coverage": 0.259,
+  "status": "rejected"
+ },
+ {
+  "id": 305,
+  "name": "Sanji",
+  "anime": "ONE PIECE",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b305-6lisPmHtCnLT.png",
+  "mask": null,
+  "width": 230,
+  "height": 350,
+  "hex": "#e0cf57",
+  "lab": [
+   82.5,
+   -8.6,
+   60.3
+  ],
+  "coverage": 0.3,
+  "status": "rejected"
+ },
+ {
+  "id": 129928,
+  "name": "Jin-U Seong",
+  "anime": "Solo Leveling",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b129928-BCEjVaP0AQSw.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#0e0a08",
+  "lab": [
+   2.8,
+   1.0,
+   0.9
+  ],
+  "coverage": 0.187,
+  "status": "rejected"
+ },
+ {
+  "id": 125886,
+  "name": "Miko Iino",
+  "anime": "Kaguya-sama: Love is War",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b125886-TQbmqAaSgBLS.png",
+  "mask": "scripts/hair/masks/125886.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#c88f7d",
+  "lab": [
+   64.5,
+   19.4,
+   18.0
+  ],
+  "coverage": 0.473,
+  "status": "approved"
+ },
+ {
+  "id": 61,
+  "name": "Robin Nico",
+  "anime": "ONE PIECE",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b61-ywXUyyocEEqt.png",
+  "mask": "scripts/hair/masks/61.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#0f1015",
+  "lab": [
+   4.8,
+   0.9,
+   -3.1
+  ],
+  "coverage": 0.375,
+  "status": "approved"
+ },
+ {
+  "id": 22037,
+  "name": "Hitagi Senjougahara",
+  "anime": "Bakemonogatari",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b22037-sY7GWSKYr2Nl.jpg",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#843c6e",
+  "lab": [
+   36.5,
+   37.5,
+   -14.4
+  ],
+  "coverage": 0.422,
+  "status": "rejected"
+ },
+ {
+  "id": 66173,
+  "name": "Izumi Miyamura",
+  "anime": "Horimiya",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b66173-g8eU1LGWPB8O.png",
+  "mask": "scripts/hair/masks/66173.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#2e2830",
+  "lab": [
+   17.1,
+   4.2,
+   -3.9
+  ],
+  "coverage": 0.33,
+  "status": "approved"
+ },
+ {
+  "id": 124381,
+  "name": "Zero Two",
+  "anime": "DARLING in the FRANXX",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b124381-2gAVq76HPfL2.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#fbccd4",
+  "lab": [
+   86.2,
+   17.6,
+   2.4
+  ],
+  "coverage": 0.345,
+  "status": "rejected"
+ },
+ {
+  "id": 90107,
+  "name": "Kusuo Saiki",
+  "anime": "Assassination Classroom Second Season",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b90107-ZULW5HlPX1uU.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#d61185",
+  "lab": [
+   47.5,
+   74.8,
+   -10.8
+  ],
+  "coverage": 0.246,
+  "status": "rejected"
+ },
+ {
+  "id": 137081,
+  "name": "Aki Hayakawa",
+  "anime": "Chainsaw Man",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b137081-TSrUR3mUJL6r.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#6390ac",
+  "lab": [
+   57.6,
+   -7.5,
+   -19.9
+  ],
+  "coverage": 0.316,
+  "status": "rejected"
+ },
+ {
+  "id": 94,
+  "name": "Asuka Langley Souryuu",
+  "anime": "Neon Genesis Evangelion",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b94-d631a3Z2KPvd.png",
+  "mask": "scripts/hair/masks/94.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#e16d23",
+  "lab": [
+   59.2,
+   41.1,
+   58.6
+  ],
+  "coverage": 0.374,
+  "status": "approved"
+ },
+ {
+  "id": 121102,
+  "name": "Yuu Ishigami",
+  "anime": "Kaguya-sama: Love is War",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b121102-tiQFxnSEIAwm.png",
+  "mask": "scripts/hair/masks/121102.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#313d53",
+  "lab": [
+   25.7,
+   1.6,
+   -14.9
+  ],
+  "coverage": 0.4,
+  "status": "approved"
+ },
+ {
+  "id": 64769,
+  "name": "Shouyou Hinata",
+  "anime": "HAIKYU!!",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b64769-WoWlCMLLgJ14.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#b37741",
+  "lab": [
+   55.2,
+   18.3,
+   38.5
+  ],
+  "coverage": 0.38,
+  "status": "rejected"
+ },
+ {
+  "id": 127518,
+  "name": "Nezuko Kamado",
+  "anime": "Demon Slayer: Kimetsu no Yaiba",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b127518-NRlq1CQ1v1ro.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#292222",
+  "lab": [
+   13.9,
+   3.3,
+   1.2
+  ],
+  "coverage": 0.243,
+  "status": "rejected"
+ },
+ {
+  "id": 129130,
+  "name": "Inosuke Hashibira",
+  "anime": "Demon Slayer: Kimetsu no Yaiba",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/n129130-SJC0Kn1DU39E.jpg",
+  "mask": null,
+  "width": 230,
+  "height": 344,
+  "hex": "#050203",
+  "lab": [
+   0.8,
+   0.9,
+   -0.0
+  ],
+  "coverage": 0.254,
+  "status": "rejected"
+ },
+ {
+  "id": 5,
+  "name": "Ichigo Kurosaki",
+  "anime": "Bleach",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b5-a7bkJgjhhigE.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#ffc951",
+  "lab": [
+   83.7,
+   7.4,
+   65.1
+  ],
+  "coverage": 0.221,
+  "status": "rejected"
+ },
+ {
+  "id": 68,
+  "name": "Roy Mustang",
+  "anime": "Fullmetal Alchemist: Brotherhood",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b68-moBLY2WO2am3.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#151519",
+  "lab": [
+   7.1,
+   1.1,
+   -2.8
+  ],
+  "coverage": 0.315,
+  "status": "rejected"
+ },
+ {
+  "id": 138102,
+  "name": "Yor Forger",
+  "anime": "SPY x FAMILY",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b138102-ZOAu9jI2d5ke.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#27363b",
+  "lab": [
+   21.5,
+   -4.8,
+   -5.3
+  ],
+  "coverage": 0.408,
+  "status": "rejected"
+ },
+ {
+  "id": 1,
+  "name": "Spike Spiegel",
+  "anime": "Cowboy Bebop",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b1-ChxaldmieFlQ.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#1b1b1b",
+  "lab": [
+   9.8,
+   -0.0,
+   0.0
+  ],
+  "coverage": 0.293,
+  "status": "rejected"
+ },
+ {
+  "id": 4003,
+  "name": "Joutarou Kuujou",
+  "anime": "JoJo's Bizarre Adventure (TV)",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b4003-gWDSEGbeOAll.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#010103",
+  "lab": [
+   0.4,
+   0.3,
+   -0.8
+  ],
+  "coverage": 0.072,
+  "status": "rejected"
+ },
+ {
+  "id": 46494,
+  "name": "Armin Arlert",
+  "anime": "Attack on Titan",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b46494-g7xYYuBtYPnO.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#deb361",
+  "lab": [
+   75.1,
+   6.1,
+   47.1
+  ],
+  "coverage": 0.387,
+  "status": "rejected"
+ },
+ {
+  "id": 31,
+  "name": "Hisoka Morow",
+  "anime": "Hunter x Hunter (2011)",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b31-FZckOuu7L1un.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#cf2f58",
+  "lab": [
+   47.0,
+   63.4,
+   16.1
+  ],
+  "coverage": 0.157,
+  "status": "rejected"
+ },
+ {
+  "id": 89028,
+  "name": "Izuku Midoriya",
+  "anime": "My Hero Academia",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b89028-8w1I9o1ISHMg.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#010101",
+  "lab": [
+   0.3,
+   -0.0,
+   0.0
+  ],
+  "coverage": 0.29,
+  "status": "rejected"
+ },
+ {
+  "id": 123962,
+  "name": "Rimuru Tempest",
+  "anime": "That Time I Got Reincarnated as a Slime",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b123962-eL9yGV0NLMF7.png",
+  "mask": "scripts/hair/masks/123962.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#e5f4f9",
+  "lab": [
+   95.1,
+   -3.9,
+   -4.1
+  ],
+  "coverage": 0.412,
+  "status": "approved"
+ },
+ {
+  "id": 71121,
+  "name": "Hange Zoe",
+  "anime": "Attack on Titan",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b71121-7R7CnQd3lHgt.png",
+  "mask": null,
+  "width": 230,
+  "height": 349,
+  "hex": "#1d0f0f",
+  "lab": [
+   5.9,
+   6.5,
+   2.3
+  ],
+  "coverage": 0.268,
+  "status": "rejected"
+ },
+ {
+  "id": 129131,
+  "name": "Zenitsu Agatsuma",
+  "anime": "Demon Slayer: Kimetsu no Yaiba",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b129131-FZrQ7lSlxmEr.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#fab645",
+  "lab": [
+   78.6,
+   14.1,
+   64.5
+  ],
+  "coverage": 0.28,
+  "status": "rejected"
+ },
+ {
+  "id": 133704,
+  "name": "Kento Nanami",
+  "anime": "JUJUTSU KAISEN",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b133704-8wLTGjc234q2.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#837456",
+  "lab": [
+   49.6,
+   0.8,
+   19.2
+  ],
+  "coverage": 0.164,
+  "status": "rejected"
+ },
+ {
+  "id": 133700,
+  "name": "Nobara Kugisaki",
+  "anime": "JUJUTSU KAISEN",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b133700-f6sOO3TcgLV6.png",
+  "mask": "scripts/hair/masks/133700.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#c06824",
+  "lab": [
+   53.2,
+   30.3,
+   51.1
+  ],
+  "coverage": 0.21,
+  "status": "approved"
+ },
+ {
+  "id": 138100,
+  "name": "Anya Forger",
+  "anime": "SPY x FAMILY",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b138100-4Li0tWRCa5bQ.png",
+  "mask": "scripts/hair/masks/138100.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#f3baab",
+  "lab": [
+   80.1,
+   18.6,
+   15.2
+  ],
+  "coverage": 0.461,
+  "status": "approved"
+ },
+ {
+  "id": 13,
+  "name": "Sasuke Uchiha",
+  "anime": "Naruto",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b13-SISLEw1oAD7a.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#131118",
+  "lab": [
+   5.4,
+   2.4,
+   -4.0
+  ],
+  "coverage": 0.342,
+  "status": "rejected"
+ },
+ {
+  "id": 134167,
+  "name": "Maki Zenin",
+  "anime": "JUJUTSU KAISEN",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b134167-5TCytk45YByD.png",
+  "mask": "scripts/hair/masks/134167.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#1a564f",
+  "lab": [
+   32.6,
+   -20.7,
+   -1.9
+  ],
+  "coverage": 0.315,
+  "status": "approved"
+ },
+ {
+  "id": 46496,
+  "name": "Erwin Smith",
+  "anime": "Attack on Titan",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b46496-Mu86MENd5wNB.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#dfca98",
+  "lab": [
+   81.9,
+   0.4,
+   27.4
+  ],
+  "coverage": 0.105,
+  "status": "rejected"
+ },
+ {
+  "id": 498,
+  "name": "Rin Toosaka",
+  "anime": "Fate/Zero",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b498-lwawtSpLyATL.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#71463b",
+  "lab": [
+   34.3,
+   17.4,
+   13.8
+  ],
+  "coverage": 0.215,
+  "status": "rejected"
+ },
+ {
+  "id": 84677,
+  "name": "Yato",
+  "anime": "Noragami",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b84677-PFmohzIXD1ud.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#8f777d",
+  "lab": [
+   52.4,
+   10.3,
+   0.5
+  ],
+  "coverage": 0.305,
+  "status": "rejected"
+ },
+ {
+  "id": 67065,
+  "name": "Hachiman Hikigaya",
+  "anime": "My Teen Romantic Comedy SNAFU",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b67065-Dhec6tE2yWA9.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#494e54",
+  "lab": [
+   33.1,
+   -0.9,
+   -3.8
+  ],
+  "coverage": 0.386,
+  "status": "rejected"
+ },
+ {
+  "id": 22036,
+  "name": "Koyomi Araragi",
+  "anime": "Bakemonogatari",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b22036-Ed3CjwPlDLp4.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#2d2e32",
+  "lab": [
+   18.9,
+   0.8,
+   -2.6
+  ],
+  "coverage": 0.386,
+  "status": "rejected"
+ },
+ {
+  "id": 64771,
+  "name": "Tobio Kageyama",
+  "anime": "HAIKYU!!",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b64771-BuCVs7B8bBdh.png",
+  "mask": "scripts/hair/masks/64771.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#191713",
+  "lab": [
+   8.0,
+   -0.3,
+   3.2
+  ],
+  "coverage": 0.218,
+  "status": "approved"
+ },
+ {
+  "id": 257562,
+  "name": "Hitori Gotou",
+  "anime": "BOCCHI THE ROCK!",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b257562-Ru35NYPfsqhY.png",
+  "mask": "scripts/hair/masks/257562.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#f7b9ce",
+  "lab": [
+   81.3,
+   25.7,
+   -1.8
+  ],
+  "coverage": 0.559,
+  "status": "approved"
+ },
+ {
+  "id": 130050,
+  "name": "Giyuu Tomioka",
+  "anime": "Demon Slayer: Kimetsu no Yaiba",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b130050-qsLThJs5VIbz.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#041721",
+  "lab": [
+   6.7,
+   -3.2,
+   -9.3
+  ],
+  "coverage": 0.347,
+  "status": "rejected"
+ },
+ {
+  "id": 38005,
+  "name": "Homura Akemi",
+  "anime": "Puella Magi Madoka Magica",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b38005-T3NR8p2f021x.jpg",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#2e2b24",
+  "lab": [
+   17.7,
+   -0.1,
+   5.0
+  ],
+  "coverage": 0.303,
+  "status": "rejected"
+ },
+ {
+  "id": 497,
+  "name": "Artoria Pendragon",
+  "anime": "Fate/Zero",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b497-Yg5pNmC8kxzs.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#e6a889",
+  "lab": [
+   73.9,
+   19.0,
+   25.1
+  ],
+  "coverage": 0.066,
+  "status": "rejected"
+ },
+ {
+  "id": 126373,
+  "name": "Miku Nakano",
+  "anime": "The Quintessential Quintuplets",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b126373-CWeyXb822uDN.png",
+  "mask": "scripts/hair/masks/126373.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#b1625f",
+  "lab": [
+   50.6,
+   31.7,
+   16.0
+  ],
+  "coverage": 0.299,
+  "status": "approved"
+ },
+ {
+  "id": 66171,
+  "name": "Kyouko Hori",
+  "anime": "Horimiya",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b66171-o2vk3689wWFK.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#6b341c",
+  "lab": [
+   28.4,
+   22.6,
+   26.0
+  ],
+  "coverage": 0.387,
+  "status": "rejected"
+ },
+ {
+  "id": 133701,
+  "name": "Sukuna",
+  "anime": "JUJUTSU KAISEN",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b133701-rCQuDpHr3UZL.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#301221",
+  "lab": [
+   10.3,
+   17.9,
+   -3.2
+  ],
+  "coverage": 0.154,
+  "status": "rejected"
+ },
+ {
+  "id": 188783,
+  "name": "Kana Arima",
+  "anime": "OSHI NO KO",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b188783-77orwP7vNuNg.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#cb4b56",
+  "lab": [
+   49.9,
+   51.5,
+   20.9
+  ],
+  "coverage": 0.277,
+  "status": "rejected"
+ },
+ {
+  "id": 129571,
+  "name": "Yuuta Okkotsu",
+  "anime": "JUJUTSU KAISEN",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b129571-GHJk7gviHOOw.jpg",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#080808",
+  "lab": [
+   2.2,
+   -0.0,
+   0.0
+  ],
+  "coverage": 0.319,
+  "status": "rejected"
+ },
+ {
+  "id": 88350,
+  "name": "Roxy Migurdia",
+  "anime": "Mushoku Tensei: Jobless Reincarnation",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b88350-QU1iwgZ887U8.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#545692",
+  "lab": [
+   38.9,
+   15.1,
+   -33.3
+  ],
+  "coverage": 0.074,
+  "status": "rejected"
+ },
+ {
+  "id": 80243,
+  "name": "Shouko Nishimiya",
+  "anime": "A Silent Voice",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b80243-RzxE51iUU5eq.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#ab756e",
+  "lab": [
+   54.6,
+   20.5,
+   12.5
+  ],
+  "coverage": 0.329,
+  "status": "rejected"
+ },
+ {
+  "id": 86,
+  "name": "Rei Ayanami",
+  "anime": "Neon Genesis Evangelion",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/86-cA1zL7fyls8E.jpg",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#8cbdd3",
+  "lab": [
+   74.1,
+   -11.1,
+   -15.8
+  ],
+  "coverage": 0.185,
+  "status": "rejected"
+ },
+ {
+  "id": 129133,
+  "name": "Kyoujurou Rengoku",
+  "anime": "Demon Slayer: Kimetsu no Yaiba",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b129133-VlTPowwt68rJ.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#fdcd5b",
+  "lab": [
+   84.5,
+   5.0,
+   61.2
+  ],
+  "coverage": 0.202,
+  "status": "rejected"
+ },
+ {
+  "id": 89,
+  "name": "Shinji Ikari",
+  "anime": "Neon Genesis Evangelion",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b89-ZtZhXkh1rITn.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#382828",
+  "lab": [
+   18.0,
+   7.4,
+   2.9
+  ],
+  "coverage": 0.076,
+  "status": "rejected"
+ },
+ {
+  "id": 719,
+  "name": "Johan Liebert",
+  "anime": "Monster",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b719-y984mDWyGf5n.jpg",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#b2af91",
+  "lab": [
+   71.0,
+   -4.2,
+   15.7
+  ],
+  "coverage": 0.263,
+  "status": "rejected"
+ },
+ {
+  "id": 126372,
+  "name": "Nino Nakano",
+  "anime": "The Quintessential Quintuplets",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b126372-DtorHRgQaYUJ.png",
+  "mask": "scripts/hair/masks/126372.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#e26c89",
+  "lab": [
+   60.5,
+   48.8,
+   6.2
+  ],
+  "coverage": 0.254,
+  "status": "approved"
+ },
+ {
+  "id": 1111,
+  "name": "C.C.",
+  "anime": "Code Geass: Lelouch of the Rebellion",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b1111-UhmlFtRFrnWa.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#a1d273",
+  "lab": [
+   78.8,
+   -32.0,
+   41.6
+  ],
+  "coverage": 0.312,
+  "status": "rejected"
+ },
+ {
+  "id": 1259,
+  "name": "Misato Katsuragi",
+  "anime": "Neon Genesis Evangelion",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b1259-afTQkZ5SVMOn.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#5d3f53",
+  "lab": [
+   30.7,
+   16.6,
+   -6.6
+  ],
+  "coverage": 0.172,
+  "status": "rejected"
+ },
+ {
+  "id": 121104,
+  "name": "Ai Hayasaka",
+  "anime": "Kaguya-sama: Love is War",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b121104-7TYRl3EEsDYU.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#fadc9a",
+  "lab": [
+   89.0,
+   1.5,
+   36.3
+  ],
+  "coverage": 0.312,
+  "status": "rejected"
+ },
+ {
+  "id": 124440,
+  "name": "Yami Sukehiro",
+  "anime": "Black Clover",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b124440-Lpdo6y8cljV6.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#3e4140",
+  "lab": [
+   27.3,
+   -1.6,
+   0.3
+  ],
+  "coverage": 0.164,
+  "status": "rejected"
+ },
+ {
+  "id": 80491,
+  "name": "Shouya Ishida",
+  "anime": "A Silent Voice",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b80491-NK6pxb6oH61P.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#464650",
+  "lab": [
+   30.1,
+   2.3,
+   -6.0
+  ],
+  "coverage": 0.281,
+  "status": "rejected"
+ },
+ {
+  "id": 127221,
+  "name": "Sakuta Azusagawa",
+  "anime": "Rascal Does Not Dream of Bunny Girl Senpai",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/n127221-Wxg4xFtW4kaJ.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#a88c84",
+  "lab": [
+   60.7,
+   8.9,
+   8.6
+  ],
+  "coverage": 0.345,
+  "status": "rejected"
+ },
+ {
+  "id": 67327,
+  "name": "Yuu Nishinoya",
+  "anime": "HAIKYU!!",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b67327-zQb1dlC7joPb.jpg",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#362f1c",
+  "lab": [
+   19.7,
+   -0.2,
+   13.2
+  ],
+  "coverage": 0.376,
+  "status": "rejected"
+ },
+ {
+  "id": 71933,
+  "name": "Karma Akabane",
+  "anime": "Assassination Classroom",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b71933-HQ1TSjlrJ8Hv.jpg",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#611105",
+  "lab": [
+   19.8,
+   34.7,
+   27.9
+  ],
+  "coverage": 0.084,
+  "status": "rejected"
+ },
+ {
+  "id": 148740,
+  "name": "Reze",
+  "anime": "Chainsaw Man",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b148740-ceAibPxLW8rR.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#615765",
+  "lab": [
+   38.4,
+   6.8,
+   -6.8
+  ],
+  "coverage": 0.342,
+  "status": "rejected"
+ },
+ {
+  "id": 209,
+  "name": "Kyou Souma",
+  "anime": "Fruits Basket (2019)",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b209-NOAbiLvJt1QA.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#f8af6c",
+  "lab": [
+   77.1,
+   20.0,
+   44.6
+  ],
+  "coverage": 0.235,
+  "status": "rejected"
+ },
+ {
+  "id": 141061,
+  "name": "Vladilena Milizé",
+  "anime": "86 EIGHTY-SIX",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b141061-jqIhB9jmClQ3.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#d4c4df",
+  "lab": [
+   81.3,
+   10.5,
+   -11.3
+  ],
+  "coverage": 0.203,
+  "status": "rejected"
+ },
+ {
+  "id": 723,
+  "name": "Nami",
+  "anime": "ONE PIECE",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b723-vp5hPptgnNEC.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#ca5d4e",
+  "lab": [
+   52.9,
+   42.4,
+   29.5
+  ],
+  "coverage": 0.2,
+  "status": "rejected"
+ },
+ {
+  "id": 36828,
+  "name": "Asuna Yuuki",
+  "anime": "Sword Art Online",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b36828-j5ib0adAzGMx.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#d8b6a6",
+  "lab": [
+   76.6,
+   9.5,
+   12.6
+  ],
+  "coverage": 0.122,
+  "status": "rejected"
+ },
+ {
+  "id": 145341,
+  "name": "Manjirou Sano",
+  "anime": "Tokyo Revengers",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b145341-CuPldCLZMvvf.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#e8d1da",
+  "lab": [
+   85.8,
+   9.9,
+   -1.7
+  ],
+  "coverage": 0.356,
+  "status": "rejected"
+ },
+ {
+  "id": 138101,
+  "name": "Loid Forger",
+  "anime": "SPY x FAMILY",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b138101-7NCB0Md8zA6G.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#c3ac99",
+  "lab": [
+   71.8,
+   5.2,
+   12.8
+  ],
+  "coverage": 0.15,
+  "status": "rejected"
+ },
+ {
+  "id": 123385,
+  "name": "Phosphophyllite",
+  "anime": "Land of the Lustrous",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b123385-ild8gXk13xcO.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#62adab",
+  "lab": [
+   66.2,
+   -23.8,
+   -6.2
+  ],
+  "coverage": 0.326,
+  "status": "rejected"
+ },
+ {
+  "id": 67067,
+  "name": "Yukino Yukinoshita",
+  "anime": "My Teen Romantic Comedy SNAFU",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b67067-gqhgjlni0Bcf.png",
+  "mask": "scripts/hair/masks/67067.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#575556",
+  "lab": [
+   36.3,
+   1.3,
+   -0.4
+  ],
+  "coverage": 0.421,
+  "status": "approved"
+ },
+ {
+  "id": 121724,
+  "name": "Ray",
+  "anime": "The Promised Neverland",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b121724-SJTdODjeO7e6.jpg",
+  "mask": null,
+  "width": 230,
+  "height": 358,
+  "hex": "#010101",
+  "lab": [
+   0.3,
+   -0.0,
+   0.0
+  ],
+  "coverage": 0.334,
+  "status": "rejected"
+ },
+ {
+  "id": 157115,
+  "name": "Toge Inumaki",
+  "anime": "JUJUTSU KAISEN",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b157115-kdhRYQdVhH95.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#dbd7cb",
+  "lab": [
+   86.0,
+   -0.7,
+   6.4
+  ],
+  "coverage": 0.273,
+  "status": "rejected"
+ },
+ {
+  "id": 174873,
+  "name": "Kurena Kukumila",
+  "anime": "86 EIGHTY-SIX",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b174873-FNf08aPYTVXY.jpg",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#6a2230",
+  "lab": [
+   24.9,
+   33.1,
+   8.6
+  ],
+  "coverage": 0.304,
+  "status": "rejected"
+ },
+ {
+  "id": 71267,
+  "name": "Kenma Kozume",
+  "anime": "HAIKYU!!",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b71267-q44J2MXMinXD.jpg",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#886e2d",
+  "lab": [
+   47.6,
+   2.6,
+   38.9
+  ],
+  "coverage": 0.371,
+  "status": "rejected"
+ },
+ {
+  "id": 6194,
+  "name": "Musashi Miyamoto",
+  "anime": null,
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b6194-HOyr8E7FCFHJ.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#7f6b7d",
+  "lab": [
+   47.7,
+   11.0,
+   -7.1
+  ],
+  "coverage": 0.3,
+  "status": "rejected"
+ },
+ {
+  "id": 154224,
+  "name": "Mami Nanami",
+  "anime": "Rent-a-Girlfriend",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b154224-7dJ09BKEnG3v.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#eed4a7",
+  "lab": [
+   85.9,
+   2.5,
+   25.7
+  ],
+  "coverage": 0.487,
+  "status": "rejected"
+ },
+ {
+  "id": 246,
+  "name": "Gokuu Son",
+  "anime": "Dragon Ball Z",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/246-wsRRr6z1kii8.png",
+  "mask": "scripts/hair/masks/246.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#010101",
+  "lab": [
+   0.3,
+   -0.0,
+   0.0
+  ],
+  "coverage": 0.292,
+  "status": "approved"
+ },
+ {
+  "id": 125659,
+  "name": "Gabi Braun",
+  "anime": "Attack on Titan Final Season",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b125659-O37MZQWibV7g.png",
+  "mask": null,
+  "width": 230,
+  "height": 344,
+  "hex": "#1e1b26",
+  "lab": [
+   10.6,
+   4.4,
+   -7.0
+  ],
+  "coverage": 0.076,
+  "status": "rejected"
+ },
+ {
+  "id": 58,
+  "name": "Chrollo Lucilfer",
+  "anime": "Hunter x Hunter (2011)",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b58-USOmsz3nursi.jpg",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#070508",
+  "lab": [
+   1.5,
+   0.9,
+   -1.0
+  ],
+  "coverage": 0.114,
+  "status": "rejected"
+ },
+ {
+  "id": 123285,
+  "name": "Asta",
+  "anime": "Black Clover",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b123285-tKijiuQErDS0.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#b3b3a9",
+  "lab": [
+   72.8,
+   -1.9,
+   5.3
+  ],
+  "coverage": 0.114,
+  "status": "rejected"
+ },
+ {
+  "id": 4004,
+  "name": "Dio Brando",
+  "anime": "JoJo's Bizarre Adventure (TV)",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b4004-w0OtWuvjhftG.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#e2ad32",
+  "lab": [
+   73.7,
+   8.6,
+   66.0
+  ],
+  "coverage": 0.092,
+  "status": "rejected"
+ },
+ {
+  "id": 89364,
+  "name": "Kazuma Satou",
+  "anime": "KONOSUBA -God's blessing on this wonderful world!",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b89364-7Th8Tv1XKJtt.png",
+  "mask": "scripts/hair/masks/89364.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#59453e",
+  "lab": [
+   31.2,
+   7.2,
+   7.5
+  ],
+  "coverage": 0.356,
+  "status": "approved"
+ },
+ {
+  "id": 13580,
+  "name": "Ash Lynx",
+  "anime": "BANANA FISH",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b13580-1J7PwIB8kTpu.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#f4d88a",
+  "lab": [
+   87.1,
+   -0.6,
+   41.9
+  ],
+  "coverage": 0.368,
+  "status": "rejected"
+ },
+ {
+  "id": 136070,
+  "name": "Shinobu Kochou",
+  "anime": "Demon Slayer: Kimetsu no Yaiba",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b136070-MC9LLxJsHyHE.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#0f0f0f",
+  "lab": [
+   4.3,
+   -0.0,
+   0.0
+  ],
+  "coverage": 0.232,
+  "status": "rejected"
+ },
+ {
+  "id": 69411,
+  "name": "Kaori Miyazono",
+  "anime": "Your lie in April",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b69411-lxM0FRvWHqlv.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#ffd99f",
+  "lab": [
+   88.6,
+   5.4,
+   33.3
+  ],
+  "coverage": 0.213,
+  "status": "rejected"
+ },
+ {
+  "id": 71611,
+  "name": "Tooru Oikawa",
+  "anime": "HAIKYU!!",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b71611-cUZwVfzeNXD9.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#633b31",
+  "lab": [
+   29.5,
+   15.9,
+   13.9
+  ],
+  "coverage": 0.261,
+  "status": "rejected"
+ },
+ {
+  "id": 2075,
+  "name": "Kamina",
+  "anime": "Gurren Lagann",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b2075-sWb5Xz76JWdX.png",
+  "mask": "scripts/hair/masks/2075.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#4e649a",
+  "lab": [
+   42.9,
+   7.5,
+   -32.0
+  ],
+  "coverage": 0.232,
+  "status": "approved"
+ },
+ {
+  "id": 121101,
+  "name": "Miyuki Shirogane",
+  "anime": "Kaguya-sama: Love is War",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b121101-Q8HzKP15At2d.png",
+  "mask": null,
+  "width": 230,
+  "height": 358,
+  "hex": "#ddbc9d",
+  "lab": [
+   78.2,
+   7.5,
+   19.9
+  ],
+  "coverage": 0.303,
+  "status": "rejected"
+ },
+ {
+  "id": 207,
+  "name": "Tooru Honda",
+  "anime": "Fruits Basket (2019)",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b207-RQ4EUdTD0K62.png",
+  "mask": "scripts/hair/masks/207.png",
+  "width": 230,
+  "height": 345,
+  "hex": "#653e44",
+  "lab": [
+   30.9,
+   18.0,
+   3.3
+  ],
+  "coverage": 0.302,
+  "status": "approved"
+ },
+ {
+  "id": 36765,
+  "name": "Kazuto Kirigaya",
+  "anime": "Sword Art Online",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b36765-BnLbXg0Tzzh9.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#434461",
+  "lab": [
+   29.9,
+   7.1,
+   -17.4
+  ],
+  "coverage": 0.288,
+  "status": "rejected"
+ },
+ {
+  "id": 284157,
+  "name": "Lucy",
+  "anime": "Cyberpunk: Edgerunners",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b284157-cqYawN7XCNJx.jpg",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#ceaaea",
+  "lab": [
+   74.6,
+   24.9,
+   -27.3
+  ],
+  "coverage": 0.218,
+  "status": "rejected"
+ },
+ {
+  "id": 81929,
+  "name": "Tatsumaki",
+  "anime": "One-Punch Man",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b81929-WPVp2LQoWgkc.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#398647",
+  "lab": [
+   49.9,
+   -37.9,
+   27.0
+  ],
+  "coverage": 0.287,
+  "status": "rejected"
+ },
+ {
+  "id": 89225,
+  "name": "Shouta Aizawa",
+  "anime": "My Hero Academia",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b89225-XBgvUhI9naVI.png",
+  "mask": null,
+  "width": 230,
+  "height": 345,
+  "hex": "#070506",
+  "lab": [
+   1.5,
+   0.7,
+   0.0
+  ],
+  "coverage": 0.446,
+  "status": "rejected"
+ }
+]

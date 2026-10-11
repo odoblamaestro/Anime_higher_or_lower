@@ -33,9 +33,24 @@ jobs:
 
       - uses: actions/configure-pages@v5
 
+      # Solo se publica lo que usa la web: fuera scripts/ (pipelines, review.html y los
+      # datos de trabajo de Hair Color con los rechazados) y los archivos de desarrollo.
+      - name: Build site
+        run: |
+          rsync -a ./ _site/ \
+            --exclude '.git' \
+            --exclude '.github' \
+            --exclude '.gitignore' \
+            --exclude '.gitattributes' \
+            --exclude '.venv' \
+            --exclude '_site' \
+            --exclude 'scripts/' \
+            --exclude 'README.md'
+          find _site -type f | sort
+
       - uses: actions/upload-pages-artifact@v4
         with:
-          path: .
+          path: _site
 
       - id: deployment
         uses: actions/deploy-pages@v4

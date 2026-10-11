@@ -1,0 +1,8 @@
+# Solo para scripts/build_hair_colors.py (se ejecuta en local, no en la Action).
+# torch en versión CPU:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+#   pip install -r scripts/requirements-hair.txt
+torch
+transformers
+numpy
+pillow

@@ -196,10 +196,49 @@ a:focus-visible {
   color: var(--ink-2);
 }
 
+/* Las dos vistas del menú (categorías / modos de una categoría) se apilan en la misma
+   celda: la lista mide lo que la más alta y el título no se mueve al cambiar de vista. */
 .modes {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
+}
+
+.modes-view {
+  grid-area: 1 / 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
   gap: 12px;
+}
+
+.modes-view:not(.is-active) {
+  visibility: hidden;
+}
+
+.modes-view.is-entering {
+  animation: rise 0.4s var(--ease) both;
+}
+
+.modes-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  text-align: left;
+}
+
+.modes-head-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.mode-chevron {
+  display: grid;
+  place-items: center;
+  flex: none;
+  color: var(--ink-3);
 }
 
 .mode-btn {
@@ -734,6 +773,230 @@ a:focus-visible {
   animation: pop 0.4s var(--ease);
 }
 
+/* ---------- Hair Color ---------- */
+.screen-hair {
+  padding: 0 16px;
+  overflow: hidden;
+}
+
+/* Móvil: nombre, imagen (ocupa el alto que sobre) y controles abajo, al alcance del pulgar */
+.hair-stage {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  gap: 12px;
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding-bottom: 6px;
+}
+
+.hair-who {
+  flex: none;
+  text-align: center;
+}
+
+.hair-who .title {
+  font-size: 20px;
+  -webkit-line-clamp: 1;
+}
+
+.hair-who .year {
+  margin-top: 2px;
+}
+
+.hair-figure {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  margin: 0;
+}
+
+/* game.js le da el mayor tamaño que cabe en el hueco con la proporción de la imagen */
+.hair-canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  transform: translate(-50%, -50%);
+  border-radius: var(--r-lg);
+  background: var(--fill);
+  box-shadow: var(--shadow), inset 0 0 0 1px var(--line);
+}
+
+.hair-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  margin: 0;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 78%, transparent);
+  color: var(--bg);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.hair-hint.is-hidden {
+  opacity: 0;
+}
+
+.hair-panel {
+  flex: none;
+}
+
+.hair-controls {
+  --thumb: #b9ab9c;
+  display: grid;
+  gap: 4px;
+}
+
+.slider {
+  display: grid;
+  text-align: left;
+}
+
+.slider-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* Pista gruesa con el degradado del color (--track) y tirador grande del color elegido */
+.slider input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 22px;
+  margin: 8px 0;
+  border-radius: 999px;
+  background: var(--track, var(--fill));
+  box-shadow: inset 0 0 0 1px var(--line);
+  cursor: pointer;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.slider input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 36px;
+  height: 36px;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  background: var(--thumb);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.18);
+  transition: transform 0.15s var(--ease);
+}
+
+.slider input::-moz-range-thumb {
+  box-sizing: border-box;
+  width: 36px;
+  height: 36px;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  background: var(--thumb);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+.slider input::-moz-range-track {
+  background: transparent;
+}
+
+.slider input:active::-webkit-slider-thumb {
+  transform: scale(1.1);
+}
+
+.slider input:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 60%, transparent);
+  outline-offset: 4px;
+}
+
+.slider input:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.hair-controls .btn {
+  margin-top: 8px;
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+  transform: none;
+}
+
+/* Resultado: ocupa el sitio de los controles */
+.hair-result {
+  text-align: center;
+  animation: rise 0.4s var(--ease) both;
+}
+
+.hair-summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.hair-score {
+  margin: 0 6px 0 0;
+  font-size: 64px;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.hair-pct {
+  font-size: 0.5em;
+  letter-spacing: 0;
+  color: var(--ink-2);
+}
+
+.hair-swatch {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
+
+.swatch {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  box-shadow: var(--shadow-sm), inset 0 0 0 1px var(--line);
+}
+
+.swatch-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.hair-detail {
+  margin: 12px 0 0;
+  font-size: 14px;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.hair-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+
 /* ---------- Fin de partida ---------- */
 .overlay {
   position: fixed;
@@ -1015,8 +1278,9 @@ a:focus-visible {
   .eyebrow { margin-bottom: 8px; font-size: 12px; }
   .logo { --logo-width: 220; }
   .tagline { margin: 12px auto 18px; font-size: 15px; }
-  .modes { gap: 10px; }
-  .mode-btn { min-height: 0; gap: 14px; padding: 12px 16px; }
+  .modes-view { gap: 10px; }
+  .modes-head { min-height: 40px; }
+  .mode-btn { min-height: 0; gap: 14px; padding: 10px 16px; }
   .mode-icon { width: 40px; height: 40px; border-radius: 13px; }
   .mode-title { font-size: 17px; }
   .mode-desc { font-size: 13px; line-height: 1.3; }
@@ -1027,6 +1291,10 @@ a:focus-visible {
   .buttons { flex-direction: row; }
   .choice-btn { flex: 1; height: 46px; padding: 0 10px; font-size: 16px; gap: 4px; }
   .caption { margin-top: 8px; }
+  .hair-stage { gap: 8px; }
+  .slider input { margin: 7px 0; }
+  .hair-controls .btn { height: 50px; margin-top: 6px; }
+  .hair-score { font-size: 54px; }
 }
 
 /* ---------- Escritorio / horizontal: tarjetas lado a lado ---------- */
@@ -1094,6 +1362,24 @@ a:focus-visible {
     max-width: 100%;
   }
 
+  /* Hair Color: imagen a la izquierda; nombre y controles a la derecha */
+  .hair-stage {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+    grid-template-rows: 1fr auto auto 1fr;
+    grid-template-areas: "figure ." "figure who" "figure panel" "figure .";
+    column-gap: 40px;
+    row-gap: 20px;
+    padding-bottom: 12px;
+  }
+
+  .hair-figure { grid-area: figure; }
+  .hair-who { grid-area: who; text-align: left; }
+  .hair-who .title { font-size: 26px; -webkit-line-clamp: 2; }
+  .hair-panel { grid-area: panel; }
+  .hair-summary { justify-content: flex-start; }
+  .hair-result { text-align: left; }
+
   .overlay {
     place-items: center;
   }
@@ -1108,7 +1394,8 @@ a:focus-visible {
 /* Pantallas muy bajas: descripciones de los modos en una sola línea */
 @media (max-height: 600px) {
   .logo { --logo-width: 190; }
-  .tagline { margin: 8px auto 14px; }
+  .tagline { display: none; }
+  .logo { margin-bottom: 16px; }
   .mode-desc { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 }
 

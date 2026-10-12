@@ -45,7 +45,8 @@ jobs:
             --exclude '.venv' \
             --exclude '_site' \
             --exclude 'scripts/' \
-            --exclude 'README.md'
+            --exclude 'README.md' \
+            --exclude 'CLAUDE.md'
           find _site -type f | sort
 
       - uses: actions/upload-pages-artifact@v4

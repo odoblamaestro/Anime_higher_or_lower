@@ -1165,6 +1165,43 @@ a:focus-visible {
   margin: 0 4px;
 }
 
+/* ---------- Texto "About" bajo la portada ---------- */
+/* Fuera de .app (que ocupa toda la altura), así la portada no cambia; durante la partida no existe */
+.about {
+  position: relative;
+  z-index: 1;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 24px 16px calc(32px + env(safe-area-inset-bottom));
+  font-size: 13px;
+  line-height: 1.55;
+  text-align: center;
+  color: var(--ink-3);
+}
+
+.about-title {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.about p {
+  margin: 0 0 10px;
+}
+
+.about strong {
+  font-weight: 600;
+}
+
+.about a {
+  color: inherit;
+  text-underline-offset: 2px;
+}
+
+body.is-playing .about {
+  display: none;
+}
+
 /* ---------- Página de privacidad ---------- */
 .page {
   flex: 1;

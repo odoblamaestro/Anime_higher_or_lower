@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Higher or Lower · Anime</title>
-  <meta name="description" content="Which anime is more popular? Guess whether it has more or fewer members or favorites and build a streak.">
+  <title>Anime Higher or Lower · Anime Guessing Game &amp; Quiz</title>
+  <meta name="description" content="Free anime higher or lower game: guess which anime or character is more popular, build a streak, play the daily challenge and test your anime quiz skills.">
   <meta name="theme-color" content="#f7f3ee" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1a1816" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://higherloweranime.com/">
@@ -24,6 +24,30 @@
   <meta name="twitter:title" content="Higher or Lower · Anime">
   <meta name="twitter:description" content="Which anime is more popular? Guess higher or lower, build a streak and take on the daily challenge.">
   <meta name="twitter:image" content="https://higherloweranime.com/og-image.jpg">
+
+  <!-- Datos estructurados para buscadores -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Anime Higher or Lower",
+    "alternateName": "Higher or Lower · Anime",
+    "description": "Free anime guessing game: guess which anime or character is more popular on AniList, build a streak and play the daily challenge. Includes Anime, Romance, Characters and Hair Color modes.",
+    "url": "https://higherloweranime.com/",
+    "image": "https://higherloweranime.com/og-image.jpg",
+    "applicationCategory": "GameApplication",
+    "genre": ["Quiz", "Trivia", "Anime"],
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "en",
+    "isAccessibleForFree": true,
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
 
   <!-- Iconos y app instalable -->
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -46,7 +70,7 @@
       <div class="mosaic" id="mosaic" aria-hidden="true"></div>
       <div class="start-inner">
         <p class="eyebrow">Anime edition</p>
-        <h1 class="logo" id="logo" aria-label="Higher or Lower">
+        <h1 class="logo" id="logo" aria-label="Anime Higher or Lower">
           <span class="logo-line" data-fit="size" aria-hidden="true">HIGHER</span>
           <span class="logo-line logo-or" data-fit="rule" aria-hidden="true">OR</span>
           <span class="logo-line" data-fit="size" aria-hidden="true">LOWER</span>
@@ -153,6 +177,14 @@
       <a href="privacy.html">Privacy</a>
     </footer>
   </div>
+
+  <!-- Texto para buscadores y lectores: queda bajo la portada (solo visible en ella) -->
+  <section class="about" aria-labelledby="about-title">
+    <h2 class="about-title" id="about-title">About Anime Higher or Lower</h2>
+    <p>Anime Higher or Lower is a free anime guessing game. Two titles face off and you guess which one is more popular: pick higher or lower, keep the streak going and beat your best score. A new daily challenge is the same for everyone.</p>
+    <p>Modes: <strong>Anime</strong> (the 1,000 most popular anime, by members or favorites), <strong>Romance</strong> (the 400 most popular romance anime), <strong>Characters</strong> (which character has more fans) and <strong>Hair Color</strong>, where you paint a character’s hair as close to the real color as you can.</p>
+    <p>All titles, numbers and images come from <a href="https://anilist.co" target="_blank" rel="noopener">AniList</a> and are refreshed every week.</p>
+  </section>
 
   <!-- Game over -->
   <div class="overlay" id="gameover" hidden>

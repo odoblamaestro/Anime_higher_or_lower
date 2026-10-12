@@ -99,6 +99,9 @@
     },
   ];
 
+  // Botón principal "Play" de la portada: el modo más fácil de entender, sin pasos intermedios.
+  const PLAY_MODE = MODES.find((mode) => mode.id === 'anime-members');
+
   // Tarjetas de la portada (el diario va aparte, encima). Una categoría con un solo
   // modo se juega directamente; con varios, al tocarla muestra sus modos.
   const CATEGORIES = [
@@ -379,6 +382,8 @@
     game: $('screen-game'),
     hair: $('screen-hair'),
     modeList: $('mode-list'),
+    btnPlay: $('btn-play'),
+    playBest: $('play-best'),
     status: $('status'),
     stage: $('stage'),
     vs: $('vs'),
@@ -491,6 +496,9 @@
   // Las dos vistas (categorías y modos de una categoría) ocupan la misma celda de la
   // rejilla: la lista mide siempre lo que la más alta y el título no salta al cambiar.
   function renderModes() {
+    const best = getBest(PLAY_MODE);
+    els.playBest.hidden = !best;
+    els.playBest.textContent = best ? `Best ${fmt(best)}` : '';
     const category = CATEGORIES.find((c) => c.id === openCategory);
     const home = el('div', 'modes-view');
     home.append(dailyButton(), ...CATEGORIES.map(categoryButton));
@@ -512,6 +520,11 @@
       : view.querySelector(`[data-category="${previous}"]`);
     if (target) target.focus({ preventScroll: true });
   }
+
+  els.btnPlay.addEventListener('click', () => {
+    track('play_click', { mode: PLAY_MODE.id });
+    startGame(PLAY_MODE);
+  });
 
   /* ---------- Portada: título y mosaico ---------- */
   const measureCtx = document.createElement('canvas').getContext('2d');

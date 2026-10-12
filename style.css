@@ -8,6 +8,7 @@
   --ink-3: #a1978c;
   --line: rgba(70, 50, 30, 0.07);
   --accent: #d9774b;
+  --on-accent: #fff;
   --good: #3a9e68;
   --bad: #d9534a;
   --tint-strong: 22%;
@@ -37,6 +38,7 @@
     --ink-3: #7f766d;
     --line: rgba(255, 235, 210, 0.07);
     --accent: #ec916a;
+    --on-accent: #1a1816;
     --good: #55bf86;
     --bad: #f0675e;
     --tint-strong: 24%;
@@ -190,10 +192,42 @@ a:focus-visible {
 
 .tagline {
   max-width: 28ch;
-  margin: 18px auto 32px;
+  margin: 18px auto 24px;
   font-size: 17px;
   line-height: 1.45;
   color: var(--ink-2);
+}
+
+/* Botón principal: lanza Anime · Members directamente */
+.btn-play {
+  position: relative;
+  width: 100%;
+  height: 64px;
+  margin-bottom: 18px;
+  border-radius: var(--r-lg);
+  background: var(--accent);
+  box-shadow: var(--shadow-lg);
+  color: var(--on-accent);
+  font-size: 22px;
+  font-weight: 750;
+  letter-spacing: -0.01em;
+}
+
+@media (hover: hover) {
+  .btn-play:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.play-best {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 13px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.85;
 }
 
 /* Las dos vistas del menú (categorías / modos de una categoría) se apilan en la misma
@@ -208,7 +242,7 @@ a:focus-visible {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   align-content: start;
-  gap: 12px;
+  gap: 8px;
 }
 
 .modes-view:not(.is-active) {
@@ -223,7 +257,7 @@ a:focus-visible {
   display: flex;
   align-items: center;
   gap: 12px;
-  min-height: 44px;
+  min-height: 40px;
   text-align: left;
 }
 
@@ -244,14 +278,14 @@ a:focus-visible {
 .mode-btn {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   width: 100%;
-  min-height: 84px;
-  padding: 18px 20px;
+  min-height: 60px;
+  padding: 9px 16px 9px 12px;
   border: 0;
-  border-radius: var(--r-lg);
-  background: var(--surface);
-  box-shadow: var(--shadow), inset 0 0 0 1px var(--line);
+  border-radius: var(--r-md);
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  box-shadow: var(--shadow-sm), inset 0 0 0 1px var(--line);
   text-align: left;
   cursor: pointer;
   transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
@@ -264,7 +298,7 @@ a:focus-visible {
 @media (hover: hover) {
   .mode-btn:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-lg), inset 0 0 0 1px var(--line);
+    box-shadow: var(--shadow), inset 0 0 0 1px var(--line);
   }
 }
 
@@ -272,9 +306,9 @@ a:focus-visible {
   display: grid;
   place-items: center;
   flex: none;
-  width: 46px;
-  height: 46px;
-  border-radius: 15px;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
   background: color-mix(in srgb, var(--accent) 14%, transparent);
   color: var(--accent);
 }
@@ -286,16 +320,16 @@ a:focus-visible {
 
 .mode-title {
   display: block;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 650;
   letter-spacing: -0.01em;
 }
 
 .mode-desc {
   display: block;
-  margin-top: 3px;
-  font-size: 14px;
-  line-height: 1.35;
+  margin-top: 1px;
+  font-size: 13px;
+  line-height: 1.3;
   color: var(--ink-2);
 }
 
@@ -316,13 +350,13 @@ a:focus-visible {
 }
 
 .mode-best-value {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
 
 .mode-btn-daily {
-  box-shadow: var(--shadow), inset 0 0 0 1.5px color-mix(in srgb, var(--accent) 35%, transparent);
+  box-shadow: var(--shadow-sm), inset 0 0 0 1.5px color-mix(in srgb, var(--accent) 35%, transparent);
 }
 
 .mode-btn-daily .mode-icon {
@@ -1314,13 +1348,16 @@ body.is-playing .about {
   .screen-start { padding: 16px 16px 12px; }
   .eyebrow { margin-bottom: 8px; font-size: 12px; }
   .logo { --logo-width: 220; }
-  .tagline { margin: 12px auto 18px; font-size: 15px; }
-  .modes-view { gap: 10px; }
-  .modes-head { min-height: 40px; }
-  .mode-btn { min-height: 0; gap: 14px; padding: 10px 16px; }
-  .mode-icon { width: 40px; height: 40px; border-radius: 13px; }
-  .mode-title { font-size: 17px; }
-  .mode-desc { font-size: 13px; line-height: 1.3; }
+  .tagline { margin: 10px auto 14px; font-size: 15px; }
+  .btn-play { height: 56px; margin-bottom: 12px; font-size: 20px; }
+  .modes-view { gap: 6px; }
+  .modes-head { min-height: 36px; }
+  .mode-btn { min-height: 0; gap: 12px; padding: 7px 14px 7px 10px; }
+  .mode-icon { width: 34px; height: 34px; border-radius: 11px; }
+  .mode-title { font-size: 15px; }
+  .mode-desc { font-size: 12px; }
+  .mode-best-value { font-size: 16px; }
+  .mode-best-value.is-small { font-size: 14px; }
   .hud { height: 54px; }
   .card { padding: 14px; gap: 14px; }
   .title { -webkit-line-clamp: 2; }

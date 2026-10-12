@@ -55,13 +55,15 @@ jobs:
       - name: Cache busting
         run: |
           v="$(git rev-parse --short=10 HEAD)"
-          sed -i -E "s#(href=\"style\.css)\"#\1?v=$v\"#; s#(src=\"game\.js)\"#\1?v=$v\"#" _site/index.html _site/privacy.html
-          sed -i -E "s#(url: 'data/[a-z]+\.json)'#\1?v=$v'#" _site/game.js
+          sed -i -E "s#(href=\"style\.css)\"#\1?v=$v\"#; s#(src=\"game\.js)\"#\1?v=$v\"#" _site/index.html _site/privacy.html _site/clip.html
+          sed -i -E "s#(url: 'data/[a-z]+\.json)'#\1?v=$v'#" _site/game.js _site/clip.html
           grep -q "style.css?v=$v" _site/index.html
           grep -q "game.js?v=$v" _site/index.html
           grep -q "style.css?v=$v" _site/privacy.html
+          grep -q "style.css?v=$v" _site/clip.html
           test "$(grep -c "\.json?v=$v'" _site/game.js)" -eq 4
-          grep -n "?v=$v" _site/index.html _site/privacy.html _site/game.js
+          test "$(grep -c "\.json?v=$v'" _site/clip.html)" -eq 3
+          grep -n "?v=$v" _site/index.html _site/privacy.html _site/clip.html _site/game.js
 
       - uses: actions/upload-pages-artifact@v4
         with:

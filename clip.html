@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Clip · Higher or Lower · Anime</title>
+  <!-- Página para grabar vídeos verticales (TikTok): no enlazada, fuera del sitemap y sin Umami -->
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Uso: clip.html?mode=members|favourites|characters|romance&n=5
+            clip.html?mode=characters&pairs=127691-40882,89361-17
+            &seed=123 repite la misma selección; R reinicia, Espacio pausa. */
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      display: grid;
+      place-items: center;
+      background: #000;
+    }
+
+    /* Marco 9:16 lo más grande posible; todo dentro se mide en cqw/cqh */
+    .clip-frame {
+      position: relative;
+      width: min(100vw, 100dvh * 9 / 16);
+      height: min(100dvh, 100vw * 16 / 9);
+      container-type: size;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    .clip-mosaic-bg {
+      position: absolute;
+      inset: -4cqw;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2.4cqw;
+      opacity: var(--mosaic-opacity);
+      filter: blur(var(--mosaic-blur));
+    }
+
+    .clip-mosaic-bg img {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+      border-radius: 3cqw;
+    }
+
+    .clip-mosaic-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: color-mix(in srgb, var(--bg) 72%, transparent);
+    }
+
+    .clip-scene {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 9cqh 5cqw 6cqh;
+    }
+
+    .clip-scene[hidden] {
+      display: none;
+    }
+
+    /* ---------- Pareja ---------- */
+    .clip-question {
+      margin: 0;
+      font-size: 9.4cqw;
+      font-weight: 800;
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    .clip-question-sub {
+      margin: 2.2cqw 0 0;
+      font-size: 4.2cqw;
+      font-weight: 650;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+      color: var(--accent);
+    }
+
+    .clip-stage {
+      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6cqw;
+      margin-top: 5cqw;
+      min-height: 0;
+    }
+
+    .clip-card {
+      --tint: #c9b8a3;
+      display: flex;
+      align-items: center;
+      gap: 4.5cqw;
+      flex: 1;
+      max-height: 62cqw;
+      min-height: 0;
+      padding: 3.6cqw;
+      border-radius: 7cqw;
+      background: linear-gradient(
+        160deg,
+        color-mix(in oklab, var(--tint) var(--tint-strong), var(--surface)) 0%,
+        color-mix(in oklab, var(--tint) var(--tint-soft), var(--surface)) 100%
+      );
+      box-shadow: var(--shadow-lg), inset 0 0 0 1px var(--line);
+      transition: transform 0.6s var(--ease), opacity 0.45s ease, filter 0.45s ease, box-shadow 0.4s ease;
+    }
+
+    .clip-card.is-out-a { transform: translateX(-115%); opacity: 0; }
+    .clip-card.is-out-b { transform: translateX(115%); opacity: 0; }
+
+    .clip-card.is-winner {
+      box-shadow: var(--shadow-lg), inset 0 0 0 1.2cqw var(--good);
+      transform: scale(1.03);
+    }
+
+    .clip-card.is-loser {
+      opacity: 0.6;
+      filter: saturate(0.5);
+      transform: scale(0.97);
+    }
+
+    .clip-poster {
+      flex: none;
+      height: 100%;
+      aspect-ratio: 2 / 3;
+      border-radius: 4.5cqw;
+      overflow: hidden;
+      background: color-mix(in oklab, var(--tint) 35%, var(--surface));
+      box-shadow: 0 2cqw 5cqw color-mix(in srgb, var(--tint) 30%, rgba(0, 0, 0, 0.18));
+    }
+
+    .clip-poster img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .clip-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .clip-title {
+      display: -webkit-box;
+      margin: 0;
+      font-size: 6.2cqw;
+      font-weight: 750;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      overflow: hidden;
+      overflow-wrap: anywhere;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+
+    .clip-sub {
+      margin: 1.2cqw 0 0;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-size: 3.8cqw;
+      font-variant-numeric: tabular-nums;
+      color: var(--ink-3);
+    }
+
+    .clip-value {
+      margin: 3.6cqw 0 0;
+      font-size: 10.5cqw;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      font-variant-numeric: tabular-nums;
+      transition: color 0.4s ease;
+    }
+
+    .clip-value.is-hidden {
+      color: var(--ink-3);
+    }
+
+    .clip-card.is-winner .clip-value {
+      color: var(--good);
+    }
+
+    .clip-unit {
+      margin: 1.2cqw 0 0;
+      font-size: 3.8cqw;
+      color: var(--ink-2);
+    }
+
+    /* Círculo central: cuenta atrás y, al revelar, flecha hacia el ganador */
+    .clip-dial {
+      position: absolute;
+      top: 50%;
+      left: 21.7cqw; /* sobre la columna de portadas: centrado tapaba el texto */
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      width: 20cqw;
+      height: 20cqw;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: var(--shadow-lg), 0 0 0 1.6cqw var(--bg);
+      color: var(--on-accent);
+      font-size: 11cqw;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      transform: translate(-50%, -50%);
+      transition: background-color 0.3s ease, transform 0.4s var(--ease), opacity 0.3s ease;
+    }
+
+    .clip-dial.is-vs {
+      background: var(--surface);
+      color: var(--ink-3);
+      font-size: 6cqw;
+    }
+
+    .clip-dial.is-result {
+      background: var(--good);
+      color: #fff;
+    }
+
+    .clip-dial.is-hidden {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.6);
+    }
+
+    .clip-dial svg {
+      width: 11cqw;
+      height: 11cqw;
+    }
+
+    .clip-dial .clip-tick {
+      animation: tick 1s var(--ease) both;
+    }
+
+    @keyframes tick {
+      0% { transform: scale(1.6); opacity: 0; }
+      25% { transform: scale(1); opacity: 1; }
+      85% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(0.8); opacity: 0.4; }
+    }
+
+    .clip-footer-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 5cqw;
+      font-size: 4cqw;
+      font-weight: 650;
+      color: var(--ink-2);
+    }
+
+    .clip-dots {
+      display: flex;
+      gap: 1.6cqw;
+    }
+
+    .clip-dots span {
+      width: 2.4cqw;
+      height: 2.4cqw;
+      border-radius: 50%;
+      background: var(--fill);
+      box-shadow: inset 0 0 0 1px var(--line);
+      transition: background-color 0.3s ease;
+    }
+
+    .clip-dots span.is-done { background: var(--ink-3); }
+    .clip-dots span.is-current { background: var(--accent); }
+
+    /* ---------- Final y mensajes ---------- */
+    .clip-scene-end,
+    .clip-scene-msg {
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .clip-end-logo {
+      margin: 0;
+      font-size: 21cqw;
+      font-weight: 800;
+      line-height: 0.9;
+    }
+
+    .clip-end-logo span {
+      display: block;
+    }
+
+    .clip-end-logo .clip-or {
+      margin: 1cqw 0;
+      font-size: 10cqw;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--ink-3);
+    }
+
+    .clip-end-play {
+      margin: 12cqw 0 0;
+      font-size: 7cqw;
+      font-weight: 650;
+      color: var(--ink-2);
+    }
+
+    .clip-end-url {
+      margin: 3cqw 0 0;
+      padding: 4cqw 7cqw;
+      border-radius: 99cqw;
+      background: var(--accent);
+      box-shadow: var(--shadow-lg);
+      color: var(--on-accent);
+      font-size: 7.4cqw;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .clip-scene-end.is-in > * {
+      animation: rise 0.6s var(--ease) both;
+    }
+
+    .clip-scene-end.is-in > :nth-child(2) { animation-delay: 0.15s; }
+    .clip-scene-end.is-in > :nth-child(3) { animation-delay: 0.3s; }
+
+    .clip-msg {
+      margin: 0;
+      font-size: 5cqw;
+      color: var(--ink-2);
+    }
+  </style>
+</head>
+<body>
+  <div class="clip-frame" id="frame">
+    <div class="clip-mosaic-bg" id="mosaic" aria-hidden="true"></div>
+
+    <section class="clip-scene clip-scene-msg" id="scene-msg">
+      <p class="clip-msg" id="msg">Loading…</p>
+    </section>
+
+    <section class="clip-scene clip-scene-pair" id="scene-pair" hidden>
+      <h1 class="clip-question" id="question">Which one is more popular?</h1>
+      <p class="clip-question-sub" id="question-sub"></p>
+      <div class="clip-stage">
+        <div class="clip-card is-out-a" id="card-a"></div>
+        <div class="clip-card is-out-b" id="card-b"></div>
+        <div class="clip-dial is-hidden" id="dial"></div>
+      </div>
+      <div class="clip-footer-bar">
+        <div class="clip-dots" id="dots"></div>
+        <span>higherloweranime.com</span>
+      </div>
+    </section>
+
+    <section class="clip-scene clip-scene-end" id="scene-end" hidden>
+      <h2 class="clip-end-logo"><span>HIGHER</span><span class="clip-or">OR</span><span>LOWER</span></h2>
+      <p class="clip-end-play">Play at</p>
+      <p class="clip-end-url">higherloweranime.com</p>
+    </section>
+  </div>
+
+  <script>
+  (() => {
+    'use strict';
+
+    /* ---------- Configuración ---------- */
+    // Mismos datos que el juego. `pool`: cuántos de los más populares (por `rankKey`) se
+    // consideran "conocidos" al buscar parejas.
+    const DATA = {
+      anime: { url: 'data/anime.json', rankKey: 'members', pool: 200 },
+      romance: { url: 'data/romance.json', rankKey: 'members', pool: 120 },
+      characters: { url: 'data/characters.json', rankKey: 'favourites', pool: 150 },
+    };
+
+    const MODES = {
+      members: { dataset: 'anime', key: 'members', unit: 'members', sub: 'AniList members' },
+      favourites: { dataset: 'anime', key: 'favourites', unit: 'favorites', sub: 'AniList favorites' },
+      romance: { dataset: 'romance', key: 'members', unit: 'members', sub: 'Romance · AniList members' },
+      characters: { dataset: 'characters', key: 'favourites', unit: 'favorites', sub: 'Characters · AniList favorites', question: 'Which character is more popular?' },
+    };
+
+    // Tiempos en ms
+    const T = { enter: 700, tick: 1000, count: 1400, hold: 2000, exit: 500, startDelay: 1000 };
+
+    const ICON_UP = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+    const ICON_DOWN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>';
+
+    const $ = (id) => document.getElementById(id);
+    const fmt = (n) => Math.round(n).toLocaleString('en-US');
+    const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+    const params = new URLSearchParams(location.search);
+
+    // Pseudoaleatorio con semilla (?seed=) para poder repetir una grabación.
+    function mulberry32(a) {
+      return () => {
+        a |= 0;
+        a = (a + 0x6d2b79f5) | 0;
+        let t = Math.imul(a ^ (a >>> 15), 1 | a);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+    }
+    const seed = Number(params.get('seed')) || Math.floor(Math.random() * 1e9);
+    const rand = mulberry32(seed);
+    const shuffle = (arr) => {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(rand() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    };
+
+    function safeColor(c) {
+      return /^#[0-9a-f]{3,8}$/i.test(c || '') ? c : '#c9b8a3';
+    }
+
+    async function load(name) {
+      const res = await fetch(DATA[name].url);
+      if (!res.ok) throw new Error(`${name}: HTTP ${res.status}`);
+      return res.json();
+    }
+
+    /* ---------- Parejas sorprendentes ----------
+     * Entre los más conocidos, una pareja puntúa si el ganador (más valor en el campo
+     * comparado) "no debería" ganar según las otras pistas que hay en los datos: es más
+     * antiguo, tiene peor nota, o pierde en el otro campo (más miembros pero menos
+     * favoritos y viceversa). En personajes, la pista es la popularidad de su anime.
+     * Se descartan diferencias enormes (obvias) y se premian las ajustadas.
+     */
+    function surprise(w, l, mode, ctx) {
+      let s = 0;
+      if (mode.dataset === 'characters') {
+        const wa = ctx.animeMembers(w.anime);
+        const la = ctx.animeMembers(l.anime);
+        if (wa && la && la > wa * 1.3) s += 2;
+        if (w.anime !== l.anime) s += 0.5;
+        if (ctx.rank.get(w.id) < 60 && ctx.rank.get(l.id) < 60) s += 1;
+      } else {
+        const other = mode.key === 'members' ? 'favourites' : 'members';
+        if ((l[other] || 0) > (w[other] || 0)) s += 2;
+        if ((l.score || 0) >= (w.score || 0) + 3) s += 1;
+        if (w.year && l.year && w.year < l.year) s += l.year - w.year >= 5 ? 1.5 : 0.75;
+        if (ctx.rank.get(w.id) < 100 && ctx.rank.get(l.id) < 100) s += 1;
+      }
+      const ratio = w[mode.key] / l[mode.key];
+      if (ratio < 1.3) s += 0.5;
+      return s;
+    }
+
+    function autoPairs(items, mode, n, ctx) {
+      const ds = DATA[mode.dataset];
+      const pool = items
+        .filter((it) => it && it.image && it[mode.key] > 0)
+        .sort((a, b) => b[ds.rankKey] - a[ds.rankKey])
+        .slice(0, ds.pool);
+      const candidates = [];
+      for (let i = 0; i < pool.length; i++) {
+        for (let j = i + 1; j < pool.length; j++) {
+          const [w, l] = pool[i][mode.key] >= pool[j][mode.key] ? [pool[i], pool[j]] : [pool[j], pool[i]];
+          const ratio = w[mode.key] / l[mode.key];
+          if (ratio < 1.04 || ratio > 2.5) continue; // empate visual u obvia
+          candidates.push({ w, l, s: surprise(w, l, mode, ctx) + rand() * 0.75 });
+        }
+      }
+      candidates.sort((a, b) => b.s - a.s);
+      // De las mejores, al azar y sin repetir elemento dentro del vídeo.
+      const top = shuffle(candidates.slice(0, Math.max(n * 12, 60)));
+      const used = new Set();
+      const picked = [];
+      for (const c of [...top, ...candidates]) {
+        if (picked.length >= n) break;
+        if (used.has(c.w.id) || used.has(c.l.id)) continue;
+        used.add(c.w.id);
+        used.add(c.l.id);
+        // El ganador sale arriba o abajo al azar.
+        picked.push(rand() < 0.5 ? [c.w, c.l] : [c.l, c.w]);
+      }
+      return picked;
+    }
+
+    function manualPairs(items, spec) {
+      const byId = new Map(items.map((it) => [String(it.id), it]));
+      const pairs = [];
+      for (const part of spec.split(',')) {
+        const [a, b] = part.trim().split('-').map((id) => byId.get(id));
+        if (a && b) pairs.push([a, b]);
+        else console.warn(`clip: pair "${part}" not found in this mode's dataset`);
+      }
+      return pairs;
+    }
+
+    /* ---------- Presentación ---------- */
+    function fillCard(card, item, mode) {
+      const isChar = mode.dataset === 'characters';
+      card.style.setProperty('--tint', safeColor(item.color));
+      card.className = card.id === 'card-a' ? 'clip-card is-out-a' : 'clip-card is-out-b';
+      const name = isChar ? item.name : item.title || item.romaji;
+      const sub = isChar ? item.anime || '' : item.year ? String(item.year) : '';
+      card.innerHTML = `
+        <div class="clip-poster"><img alt=""></div>
+        <div class="clip-info">
+          <p class="clip-title"></p>
+          <p class="clip-sub"></p>
+          <p class="clip-value is-hidden">?</p>
+          <p class="clip-unit"></p>
+        </div>`;
+      card.querySelector('img').src = item.image;
+      card.querySelector('.clip-title').textContent = name || 'Untitled';
+      card.querySelector('.clip-sub').textContent = sub;
+      card.querySelector('.clip-unit').textContent = mode.unit;
+    }
+
+    // Misma curva que el contador del juego (game.js, countUp).
+    function countUp(node, target, duration) {
+      return new Promise((resolve) => {
+        const start = performance.now();
+        const ease = (t) => 1 - Math.pow(1 - t, 4);
+        const frame = (now) => {
+          const t = Math.min(1, Math.max(0, (now - start) / duration));
+          node.textContent = fmt(target * ease(t));
+          if (t < 1) requestAnimationFrame(frame);
+          else resolve();
+        };
+        requestAnimationFrame(frame);
+      });
+    }
+
+    function preload(urls, timeout = 10000) {
+      const one = (url) => new Promise((resolve) => {
+        const img = new Image();
+        img.onload = img.onerror = resolve;
+        img.src = url;
+      });
+      return Promise.race([Promise.all(urls.map(one)), wait(timeout)]);
+    }
+
+    function buildMosaic(items) {
+      const pics = shuffle(items.filter((it) => it.image).slice(0, 80)).slice(0, 28);
+      $('mosaic').replaceChildren(...pics.map((it) => {
+        const img = new Image();
+        img.src = it.thumb || it.image;
+        img.alt = '';
+        return img;
+      }));
+    }
+
+    // Pausa (Espacio) y reinicio (R): cada paso espera a `gate` y se aborta si cambia el token.
+    let token = 0;
+    let paused = false;
+    async function step(ms, my) {
+      const end = performance.now() + ms;
+      while (performance.now() < end || paused) {
+        if (my !== token) throw new Error('cancelled');
+        await wait(paused ? 100 : Math.min(50, end - performance.now()));
+      }
+      if (my !== token) throw new Error('cancelled');
+    }
+
+    function show(scene) {
+      for (const id of ['scene-msg', 'scene-pair', 'scene-end']) $(id).hidden = id !== scene;
+    }
+
+    async function playPair(pair, mode, index, total, my) {
+      const cards = [$('card-a'), $('card-b')];
+      const dial = $('dial');
+      pair.forEach((item, i) => fillCard(cards[i], item, mode));
+      $('dots').replaceChildren(...Array.from({ length: total }, (_, i) => {
+        const dot = document.createElement('span');
+        if (i < index) dot.className = 'is-done';
+        if (i === index) dot.className = 'is-current';
+        return dot;
+      }));
+      dial.className = 'clip-dial is-vs is-hidden';
+      dial.textContent = 'VS';
+
+      await step(60, my);
+      cards.forEach((c) => c.classList.remove('is-out-a', 'is-out-b'));
+      dial.classList.remove('is-hidden');
+      await step(T.enter, my);
+
+      // Cuenta atrás 3, 2, 1
+      dial.className = 'clip-dial';
+      for (const n of [3, 2, 1]) {
+        dial.innerHTML = `<span class="clip-tick">${n}</span>`;
+        await step(T.tick, my);
+      }
+
+      // Revelar: contadores a la vez y ganador resaltado
+      const values = pair.map((it) => it[mode.key]);
+      const winner = values[0] >= values[1] ? 0 : 1;
+      dial.className = 'clip-dial is-vs';
+      dial.textContent = 'VS';
+      const nodes = cards.map((c) => c.querySelector('.clip-value'));
+      nodes.forEach((node) => node.classList.remove('is-hidden'));
+      await Promise.all(nodes.map((node, i) => countUp(node, values[i], T.count)));
+      if (my !== token) throw new Error('cancelled');
+      cards[winner].classList.add('is-winner');
+      cards[1 - winner].classList.add('is-loser');
+      dial.className = 'clip-dial is-result';
+      dial.innerHTML = winner === 0 ? ICON_UP : ICON_DOWN;
+      await step(T.hold, my);
+
+      cards[0].classList.add('is-out-a');
+      cards[1].classList.add('is-out-b');
+      dial.classList.add('is-hidden');
+      await step(T.exit, my);
+    }
+
+    async function run() {
+      const my = ++token;
+      paused = false;
+      const mode = MODES[params.get('mode')] || MODES.members;
+      const n = Math.min(20, Math.max(1, parseInt(params.get('n'), 10) || 5));
+      show('scene-msg');
+      $('msg').textContent = 'Loading…';
+      $('question').textContent = mode.question || 'Which one is more popular?';
+      $('question-sub').textContent = mode.sub;
+
+      try {
+        const items = await load(mode.dataset);
+        // Fondo de portadas de anime (también en personajes, como la portada del juego).
+        const animes = mode.dataset === 'characters' ? await load('anime') : items;
+        buildMosaic(animes);
+
+        const ctx = { rank: new Map() };
+        [...items].sort((a, b) => b[DATA[mode.dataset].rankKey] - a[DATA[mode.dataset].rankKey])
+          .forEach((it, i) => ctx.rank.set(it.id, i));
+        const animeByTitle = new Map();
+        for (const a of animes) {
+          for (const t of [a.title, a.romaji]) if (t) animeByTitle.set(t.toLowerCase(), a.members);
+        }
+        ctx.animeMembers = (title) => animeByTitle.get(String(title || '').toLowerCase()) || 0;
+
+        const spec = params.get('pairs');
+        const pairs = spec ? manualPairs(items, spec) : autoPairs(items, mode, n, ctx);
+        if (!pairs.length) throw new Error('No pairs found');
+        console.info('clip: seed', seed, pairs.map(([a, b]) => `${a.id}-${b.id}`).join(','));
+
+        await preload(pairs.flat().map((it) => it.image));
+        if (my !== token) return;
+        show('scene-pair');
+        await step(T.startDelay, my);
+        for (let i = 0; i < pairs.length; i++) await playPair(pairs[i], mode, i, pairs.length, my);
+
+        show('scene-end');
+        $('scene-end').classList.remove('is-in');
+        void $('scene-end').offsetWidth;
+        $('scene-end').classList.add('is-in');
+      } catch (err) {
+        if (err.message === 'cancelled') return;
+        show('scene-msg');
+        $('msg').textContent = err.message;
+        console.error(err);
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'r' || e.key === 'R') run();
+      else if (e.key === ' ') {
+        e.preventDefault();
+        paused = !paused;
+      }
+    });
+
+    run();
+  })();
+  </script>
+</body>
+</html>

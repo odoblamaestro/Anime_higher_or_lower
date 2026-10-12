@@ -1586,6 +1586,9 @@ ${url}`;
   });
 
   /* ---------- Inicio ---------- */
+  // La portada se puede desplazar hasta el bloque "About": sin esto, al recargar (incluso con
+  // Ctrl+F5) el navegador restauraba el desplazamiento y el título quedaba cortado arriba.
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   renderModes();
   fitLogo();
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitLogo);

@@ -57,7 +57,7 @@ Para verificar UI se ha usado Edge headless por CDP (`msedge --headless=new --re
 
 - `scripts/fetch_*.py` usan solo la biblioteca estándar; no sobrescriben el JSON si llegan menos resultados del mínimo. `fetch_romance.py` reutiliza `fetch_dataset()` de `fetch_anime.py` (filtro `genre_in`; AniList ignora argumentos a null).
 - `.github/workflows/update-data.yml`: lunes 00:07 UTC ejecuta los fetch, commitea si hay cambios y **llama a `deploy.yml` vía `workflow_call`** (los push con `GITHUB_TOKEN` no disparan otros workflows). Hair Color no está en la Action.
-- `.github/workflows/deploy.yml`: push a `main` despliega. Copia el repo a `_site/` con rsync **excluyendo `scripts/`, `.github`, README, CLAUDE.md y archivos de desarrollo**; si se añade un archivo solo de desarrollo fuera de `scripts/`, añadirlo a esa lista.
+- `.github/workflows/deploy.yml`: push a `main` despliega. Copia el repo a `_site/` con rsync **excluyendo `scripts/`, `.github`, README, CLAUDE.md y archivos de desarrollo**; si se añade un archivo solo de desarrollo fuera de `scripts/`, añadirlo a esa lista. Después añade `?v=<commit>` (cache busting) a `style.css`/`game.js` en los HTML y a las `url: 'data/*.json'` de `DATASETS`; el paso falla si no encuentra alguna referencia, así que al cambiar esas líneas hay que mantener el formato o actualizar el `sed`.
 
 ## Entorno (Windows)
 

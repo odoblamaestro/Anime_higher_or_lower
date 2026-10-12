@@ -49,6 +49,20 @@ jobs:
             --exclude 'CLAUDE.md'
           find _site -type f | sort
 
+      # Cache busting: GitHub Pages sirve todo con max-age=600, y sin esto el navegador podía
+      # mezclar un HTML nuevo con CSS/JS/datos viejos (p. ej. un botón sin estilos ni listener).
+      # Se añade ?v=<commit> a las referencias; si alguna no aparece, el despliegue falla.
+      - name: Cache busting
+        run: |
+          v="$(git rev-parse --short=10 HEAD)"
+          sed -i -E "s#(href=\"style\.css)\"#\1?v=$v\"#; s#(src=\"game\.js)\"#\1?v=$v\"#" _site/index.html _site/privacy.html
+          sed -i -E "s#(url: 'data/[a-z]+\.json)'#\1?v=$v'#" _site/game.js
+          grep -q "style.css?v=$v" _site/index.html
+          grep -q "game.js?v=$v" _site/index.html
+          grep -q "style.css?v=$v" _site/privacy.html
+          test "$(grep -c "\.json?v=$v'" _site/game.js)" -eq 4
+          grep -n "?v=$v" _site/index.html _site/privacy.html _site/game.js
+
       - uses: actions/upload-pages-artifact@v4
         with:
           path: _site

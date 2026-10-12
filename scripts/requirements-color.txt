@@ -1,0 +1,10 @@
+# Herramienta de anotación de Color Guess (scripts/color/server.py), solo en local.
+# La varita y el pincel solo necesitan pillow; SAM necesita el resto. torch y torchvision en versión CPU:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+#   pip install -r scripts/requirements-color.txt
+pillow
+torch
+torchvision
+timm
+transformers
+numpy

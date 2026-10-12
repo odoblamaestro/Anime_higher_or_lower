@@ -2,73 +2,58 @@
 
 Juego web Higher or Lower de anime ([higherloweranime.com](https://higherloweranime.com)): web estática sin frameworks, desplegada en GitHub Pages con GitHub Actions y datos de AniList que se actualizan cada semana. La carpeta `scripts/` y los archivos de desarrollo no se publican (ver `.github/workflows/deploy.yml`).
 
-## Hair Color: ampliar el pool de personajes
+## Color Guess: anotar objetivos (en preparación)
 
-Los personajes de Hair Color salen de un pipeline local (`scripts/build_hair_colors.py`) y de una revisión manual. Hay dos juegos de datos:
-
-| | Qué contiene | ¿Se publica? |
-|---|---|---|
-| `scripts/hair/candidates.json` y `scripts/hair/masks/` | Todos los candidatos procesados, con su estado: `pending`, `approved` o `rejected` | No |
-| `data/hair.json` y `assets/hair/` | Solo los aprobados, con lo que necesita el juego | Sí |
-
-El script regenera los datos del juego al terminar cada ejecución, así que no hay que tocarlos a mano.
+El modo Hair Color está oculto en la portada mientras se rehace como **Color Guess** ("What color is Luffy's straw hat?"). Los datos se anotan a mano con una herramienta local que no se publica (`scripts/color/`).
 
 ### Preparación (una sola vez)
 
 ```powershell
 python -m venv .venv
-.venv\Scripts\python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
-.venv\Scripts\python -m pip install -r scripts\requirements-hair.txt
+.venv\Scripts\python -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+.venv\Scripts\python -m pip install -r scripts\requirements-color.txt
 ```
 
-### 1. Procesar los siguientes personajes del ranking
+Sin torch la herramienta funciona igual, pero sin SAM (solo varita, pincel y goma). La primera vez que se usa SAM se descarga el modelo (`facebook/sam2.1-hiera-tiny`, unos 150 MB).
+
+### Arrancar
 
 ```powershell
-.venv\Scripts\python scripts\build_hair_colors.py --limit 300
+.venv\Scripts\python scripts\color\server.py
 ```
 
-`--limit` indica hasta qué puesto del ranking de favoritos (`data/characters.json`) llegar. Los personajes ya procesados y los rechazados se saltan, así que con 150 hechos este comando solo procesa del 151 al 300. Los nuevos quedan como `pending` y todavía no entran en el juego.
+Abre <http://localhost:8001>. Con `--model edgetam` SAM va unas 3 veces más rápido, pero las máscaras salen algo más ruidosas; con `--model none` se desactiva.
 
-Tarda unos 4 s por personaje en CPU (unos 10 minutos por cada 150). Se puede interrumpir con Ctrl+C y relanzar: continúa donde se quedó. Los personajes sin pelo detectado (calvos, sombreros…) se descartan automáticamente.
+### Objetivos: `scripts/color/targets.csv`
 
-El ranking cambia cada semana con la actualización de datos, así que "del 151 al 300" es aproximado: algún personaje puede haber subido o bajado de puesto.
+| Columna | Qué es |
+|---|---|
+| `character` | Id de personaje de AniList o su nombre (se busca en `data/characters.json` y, si no está, en AniList) |
+| `target` | Lo que se colorea: `Hair`, `Straw hat`, `Scarf`, `Eyes`… |
+| `image` | Opcional: ruta local (relativa a `scripts/color/` o a la raíz) o URL. Si se deja vacía, se usa la de AniList |
+| `short_name` | Opcional: nombre corto para la pregunta (`Luffy`, `Gojo`); también se puede escribir en la herramienta |
 
-### 2. Revisar en review.html
+### Uso
 
-```powershell
-python -m http.server 8000
-```
+- **Imagen:** arrastra una captura del anime al lienzo, pégala con Ctrl+V o pega una URL arriba. Las imágenes que no son de AniList se guardan reducidas (400 px de alto, WebP) en `assets/color/img/`. **AniList** vuelve a la imagen original.
+- **Varita** (`W`): clic selecciona la zona conectada de color parecido (distancia en Lab, tolerancia con el slider o `[` `]`); `Shift`+clic añade, `Alt`/`Ctrl`+clic resta.
+- **SAM** (`A`): clic izquierdo incluye, derecho excluye. Con un solo punto, `M` alterna entre los 3 niveles de SAM (trozo, objeto, todo); `N` empieza otro objeto; `Esc` lo cancela. El cálculo pesado (~7 s por imagen en CPU) se hace en segundo plano al abrir cada objetivo y se precarga el siguiente; luego cada clic tarda menos de 1 s.
+- **Pincel** (`B`) y **goma** (`E`) para retocar; **Crecer/Encoger** añaden o quitan 1 px de borde (útil junto a las líneas negras).
+- **Color objetivo:** se calcula solo (mediana en Lab sin el 15 % más oscuro ni el 15 % más claro); el **cuentagotas** (`I`) lo fija a mano.
+- **Vista previa:** "Real" recolorea la máscara con el color objetivo como lo hará el juego (debería parecerse al original); "Prueba" con otro tono; "Gris" es como empieza la partida.
+- `Ctrl+Z` / `Ctrl+Y`, rueda para zoom, `Espacio`+arrastrar o botón central para moverse, `0` para encajar, `H` oculta la capa.
+- **Guardar** (`Enter`) pasa al siguiente pendiente; **Saltar** (`Shift+Enter`). Todo se guarda en `scripts/color/annotations.json`: se puede cerrar y seguir otro día.
 
-Abre <http://localhost:8000/scripts/review.html> y pulsa el filtro **Pendientes**. Cada tarjeta muestra la imagen original, la máscara del pelo en magenta y una vista previa del recoloreado con el color calculado. Acepta los que tengan bien la máscara y el color, y rechaza el resto. Las decisiones se guardan en el navegador, así que puedes cerrar la página y seguir más tarde.
+### Qué se genera
 
-Al terminar, pulsa **Exportar review.json**.
+| | Qué contiene | ¿Se publica? |
+|---|---|---|
+| `scripts/color/targets.csv` y `annotations.json` | Lista de objetivos y estado del trabajo (pendiente, guardado, saltado) | No |
+| `scripts/color/cache/` | Imágenes de AniList y embeddings de SAM (ignorado por git) | No |
+| `data/color.json`, `assets/color/masks/` y `assets/color/img/` | Objetivos guardados con su máscara y color, en el orden de `targets.csv` | Sí |
 
-### 3. Aplicar las decisiones
+`data/color.json` se regenera en cada guardado; no hay que editarlo a mano. El juego todavía no lo usa.
 
-```powershell
-.venv\Scripts\python scripts\build_hair_colors.py --approve "$env:USERPROFILE\Downloads\review.json"
-```
+### Pipeline anterior
 
-Solo cambian los personajes que aparecen en `review.json`:
-
-- **Aprobados anteriores:** se conservan aunque el archivo no los incluya, por ejemplo si revisas desde otro navegador.
-- **Pendientes que no hayas revisado:** siguen pendientes.
-- **Rechazados:** pierden la máscara y ya no se vuelven a procesar.
-
-Luego se regeneran `data/hair.json` y `assets/hair/` con todos los aprobados.
-
-**Recuperar un rechazado:** acéptalo en review.html, exporta, aplica y ejecuta el script sin `--approve` para regenerar su máscara.
-
-### 4. Probar y publicar
-
-Prueba el modo en local (`python -m http.server 8000` → <http://localhost:8000>) y sube los cambios:
-
-```powershell
-git add scripts/hair data/hair.json assets/hair
-git commit -m "Hair Color: add characters 151-300"
-git push
-```
-
-El push despliega la web automáticamente.
-
-El personaje del día recorre la lista de aprobados en un orden fijo, así que al cambiar la lista cambia el orden. Para que nadie vea cambiar el personaje del día a mitad de jornada, publica las ampliaciones justo después de las 00:00 UTC. Quien ya haya jugado ese día seguirá viendo su resultado.
+`scripts/build_hair_colors.py`, `scripts/review.html` y `scripts/hair/` son el pipeline automático anterior (CLIPSeg sobre las imágenes de AniList, que en su mayoría son de manga y no tienen los colores del anime). Se conservan como referencia, pero **no lo ejecutes**: regeneraría `data/hair.json` y `assets/hair/`, que ya no se publican.

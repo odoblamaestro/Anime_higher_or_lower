@@ -104,11 +104,13 @@
 
   // Tarjetas de la portada (el diario va aparte, encima). Una categoría con un solo
   // modo se juega directamente; con varios, al tocarla muestra sus modos.
+  // `hidden`: no sale en la portada (el código del modo se conserva).
   const CATEGORIES = [
     { id: 'anime', label: 'Anime', description: 'The 1,000 most popular anime.', icon: 'tv' },
     { id: 'romance', label: 'Romance', description: 'The 400 most popular romance anime.', icon: 'heart' },
     { id: 'characters', label: 'Characters', description: 'Which character has more fans?', icon: 'star' },
-    { id: 'hair', label: 'Hair Color', description: 'Paint a character’s hair. New one daily.', icon: 'palette' },
+    // Oculta mientras se rehace con datos anotados a mano (scripts/color/).
+    { id: 'hair', label: 'Hair Color', description: 'Paint a character’s hair. New one daily.', icon: 'palette', hidden: true },
   ];
 
   // Modos de Hair Color: otro juego (sección "Hair Color" más abajo), no Higher or Lower.
@@ -501,7 +503,7 @@
     els.playBest.textContent = best ? `Best ${fmt(best)}` : '';
     const category = CATEGORIES.find((c) => c.id === openCategory);
     const home = el('div', 'modes-view');
-    home.append(dailyButton(), ...CATEGORIES.map(categoryButton));
+    home.append(dailyButton(), ...CATEGORIES.filter((c) => !c.hidden).map(categoryButton));
     const detail = el('div', 'modes-view');
     if (category) detail.append(...categoryView(category));
     (category ? detail : home).classList.add('is-active');

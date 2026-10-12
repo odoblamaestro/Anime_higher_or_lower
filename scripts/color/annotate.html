@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anotación · Color Guess</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <!-- Herramienta local (no se publica): se sirve con scripts/color/server.py -->
+  <style>
+    :root {
+      --bg: #1a1816;
+      --surface: #25221f;
+      --fill: #312d29;
+      --ink: #f4eee7;
+      --ink-2: #b8afa5;
+      --ink-3: #7f766d;
+      --line: rgba(255, 235, 210, 0.09);
+      --accent: #ec916a;
+      --good: #55bf86;
+      --warn: #e2b04a;
+      --bad: #f0675e;
+      color-scheme: dark;
+    }
+
+    * { box-sizing: border-box; }
+
+    [hidden] { display: none !important; } /* si no, los display: grid/flex de abajo lo anulan */
+
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr) 300px;
+      background: var(--bg);
+      color: var(--ink);
+      font: 13px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow: hidden;
+    }
+
+    button, input, select { font: inherit; color: inherit; }
+
+    button {
+      padding: 6px 10px;
+      border: 0;
+      border-radius: 8px;
+      background: var(--fill);
+      cursor: pointer;
+    }
+
+    button:hover { background: color-mix(in srgb, var(--fill) 80%, white); }
+    button:disabled { opacity: 0.45; cursor: default; }
+    button.primary { background: var(--accent); color: #1a1816; font-weight: 650; }
+    button.is-on { background: var(--accent); color: #1a1816; }
+    button.is-on kbd, button.primary kbd { color: inherit; background: rgba(0, 0, 0, 0.12); }
+
+    kbd {
+      padding: 0 4px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      font: 11px ui-monospace, Consolas, monospace;
+      color: var(--ink-2);
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      font-size: 11px;
+      font-weight: 650;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+
+    /* ---------- Lista de objetivos ---------- */
+    #sidebar {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      border-right: 1px solid var(--line);
+    }
+
+    .side-head { padding: 14px 14px 10px; }
+    .side-head h1 { margin: 0 0 10px; font-size: 15px; }
+
+    .progress {
+      height: 6px;
+      border-radius: 6px;
+      background: var(--fill);
+      overflow: hidden;
+    }
+
+    .progress span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: var(--good);
+      transition: width 0.3s;
+    }
+
+    .progress-text {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 6px;
+      color: var(--ink-3);
+    }
+
+    .progress-text label { cursor: pointer; }
+
+    #list {
+      flex: 1;
+      margin: 0;
+      padding: 0 8px 12px;
+      overflow-y: auto;
+      list-style: none;
+    }
+
+    #list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 8px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    #list li:hover { background: var(--surface); }
+    #list li.is-current { background: var(--fill); }
+    #list li.is-hidden { display: none; }
+
+    .dot {
+      flex: none;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--ink-3);
+    }
+
+    .dot.done { background: var(--good); }
+    .dot.skipped { background: var(--warn); }
+
+    .li-text { min-width: 0; }
+    .li-text b, .li-text span { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .li-text span { color: var(--ink-3); font-size: 12px; }
+
+    /* ---------- Lienzo ---------- */
+    #main {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      min-height: 0;
+    }
+
+    #topbar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .who { flex: 1; min-width: 0; }
+    .who b { font-size: 15px; }
+    .who span { color: var(--ink-3); }
+    #question { margin-top: 2px; color: var(--accent); font-weight: 600; }
+
+    .source {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .source input {
+      width: 220px;
+      padding: 6px 8px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+
+    #source-kind { color: var(--ink-3); white-space: nowrap; }
+
+    #viewport {
+      position: relative;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+      background:
+        repeating-conic-gradient(#221f1c 0 25%, #1c1a18 0 50%) 0 0 / 20px 20px;
+    }
+
+    #view {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      touch-action: none;
+    }
+
+    #viewport.tool-wand #view,
+    #viewport.tool-sam #view,
+    #viewport.tool-picker #view { cursor: crosshair; }
+    #viewport.tool-brush #view,
+    #viewport.tool-eraser #view { cursor: none; }
+    #viewport.is-panning #view { cursor: grabbing; }
+
+    #empty {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 40px;
+      color: var(--ink-3);
+      font-size: 15px;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    #drop {
+      position: absolute;
+      inset: 12px;
+      display: none;
+      place-items: center;
+      border: 3px dashed var(--accent);
+      border-radius: 18px;
+      background: rgba(26, 24, 22, 0.85);
+      color: var(--accent);
+      font-size: 18px;
+      font-weight: 650;
+      pointer-events: none;
+    }
+
+    #viewport.is-dragging #drop { display: grid; }
+
+    #toast {
+      position: absolute;
+      left: 50%;
+      bottom: 16px;
+      padding: 8px 14px;
+      border-radius: 99px;
+      background: var(--surface);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      transform: translate(-50%, 8px);
+      transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none;
+    }
+
+    #toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+    #toast.is-error { color: var(--bad); }
+
+    #busy {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 6px 12px;
+      border-radius: 99px;
+      background: var(--surface);
+      color: var(--ink-2);
+    }
+
+    /* ---------- Panel derecho ---------- */
+    #panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 14px;
+      border-left: 1px solid var(--line);
+      overflow-y: auto;
+    }
+
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+    }
+
+    .tools button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      padding: 7px 2px;
+      font-size: 12px;
+    }
+
+    .tools button kbd { background: transparent; }
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .row > span:first-child { width: 72px; flex: none; color: var(--ink-2); }
+    .row input[type="range"] { flex: 1; min-width: 0; accent-color: var(--accent); }
+    .row output { width: 28px; text-align: right; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+    .row button { flex: 1; }
+
+    .hint { margin: 8px 0 0; color: var(--ink-3); font-size: 12px; }
+
+    .color {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 10px;
+      align-items: center;
+    }
+
+    #swatch {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      box-shadow: inset 0 0 0 1px var(--line);
+      background: transparent;
+    }
+
+    #color-text { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+    #color-text b { color: var(--ink); }
+
+    #preview {
+      display: block;
+      width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+      border-radius: 10px;
+      background: var(--surface);
+    }
+
+    .seg {
+      display: flex;
+      gap: 4px;
+      margin-top: 8px;
+    }
+
+    .seg button { flex: 1; padding: 5px 4px; font-size: 12px; }
+
+    #short {
+      width: 100%;
+      padding: 6px 8px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+
+    .actions .primary { grid-column: 1 / -1; padding: 10px; }
+
+    details { color: var(--ink-3); font-size: 12px; }
+    details summary { cursor: pointer; }
+    details p { margin: 6px 0 0; }
+  </style>
+</head>
+<body>
+  <aside id="sidebar">
+    <div class="side-head">
+      <h1>Color Guess · anotación</h1>
+      <div class="progress"><span id="progress-bar"></span></div>
+      <div class="progress-text">
+        <span id="progress-text">–</span>
+        <label><input type="checkbox" id="only-pending"> Solo pendientes</label>
+      </div>
+    </div>
+    <ul id="list"></ul>
+  </aside>
+
+  <main id="main">
+    <div id="topbar">
+      <div class="who">
+        <b id="who-name">–</b> <span id="who-anime"></span>
+        <div id="question"></div>
+      </div>
+      <div class="source">
+        <span id="source-kind"></span>
+        <input id="url" type="url" placeholder="Pega una URL de imagen…">
+        <button id="url-load" type="button">Cargar</button>
+        <button id="use-anilist" type="button" title="Volver a la imagen de targets.csv o de AniList">AniList</button>
+      </div>
+    </div>
+    <div id="viewport" class="tool-wand">
+      <canvas id="view"></canvas>
+      <div id="empty">Cargando…</div>
+      <div id="drop">Suelta la imagen</div>
+      <div id="busy" hidden></div>
+      <div id="toast"></div>
+    </div>
+  </main>
+
+  <aside id="panel">
+    <section>
+      <h2>Herramientas</h2>
+      <div class="tools" id="tools">
+        <button type="button" data-tool="wand" title="Varita: clic selecciona la zona conectada de color parecido">Varita <kbd>W</kbd></button>
+        <button type="button" data-tool="sam" title="SAM: clic izquierdo incluye, derecho excluye">SAM <kbd>A</kbd></button>
+        <button type="button" data-tool="brush" title="Pincel">Pincel <kbd>B</kbd></button>
+        <button type="button" data-tool="eraser" title="Goma">Goma <kbd>E</kbd></button>
+        <button type="button" data-tool="picker" title="Cuentagotas: corrige el color objetivo">Color <kbd>I</kbd></button>
+      </div>
+      <div id="opt-wand">
+        <label class="row"><span>Tolerancia</span><input type="range" id="tol" min="1" max="60" value="14"><output id="tol-out">14</output></label>
+        <p class="hint">Clic: zona · <kbd>Shift</kbd>+clic: añadir · <kbd>Alt</kbd>/<kbd>Ctrl</kbd>+clic: restar</p>
+      </div>
+      <div id="opt-sam" hidden>
+        <div class="row">
+          <button type="button" id="sam-new">Nuevo objeto <kbd>N</kbd></button>
+          <button type="button" id="sam-level">Nivel <kbd>M</kbd></button>
+        </div>
+        <p class="hint" id="sam-hint">Izquierdo: incluir · derecho: excluir · empezar con <kbd>Alt</kbd> resta el objeto · <kbd>Esc</kbd> cancela</p>
+      </div>
+      <div id="opt-brush" hidden>
+        <label class="row"><span>Tamaño</span><input type="range" id="brush" min="1" max="80" value="10"><output id="brush-out">10</output></label>
+        <p class="hint"><kbd>[</kbd> <kbd>]</kbd> cambian el tamaño</p>
+      </div>
+      <div id="opt-picker" hidden>
+        <p class="hint">Clic en la imagen para fijar el color objetivo a mano (media de 3×3 px).</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Máscara</h2>
+      <div class="row">
+        <button type="button" id="grow" title="Añade 1 px de borde (bordes antialias junto a las líneas)">Crecer</button>
+        <button type="button" id="shrink" title="Quita 1 px de borde">Encoger</button>
+        <button type="button" id="clear">Borrar</button>
+      </div>
+      <div class="row">
+        <button type="button" id="undo">Deshacer <kbd>Ctrl+Z</kbd></button>
+        <button type="button" id="redo">Rehacer <kbd>Ctrl+Y</kbd></button>
+      </div>
+      <label class="row"><span>Capa</span><input type="range" id="overlay" min="0" max="100" value="55"><output id="overlay-out">55</output></label>
+      <label class="row"><span>Borde suave</span><input type="checkbox" id="soft" checked><span class="hint" style="margin:0">desenfoque de 1 px al guardar</span></label>
+    </section>
+
+    <section>
+      <h2>Color objetivo</h2>
+      <div class="color">
+        <div id="swatch"></div>
+        <div id="color-text">–</div>
+      </div>
+      <div class="row"><button type="button" id="color-auto">Volver al automático</button></div>
+    </section>
+
+    <section>
+      <h2>Vista previa (juego)</h2>
+      <canvas id="preview"></canvas>
+      <div class="seg" id="preview-mode">
+        <button type="button" data-mode="target" class="is-on">Real</button>
+        <button type="button" data-mode="test">Prueba</button>
+        <button type="button" data-mode="gray">Gris</button>
+      </div>
+      <label class="row" id="test-hue-row" hidden><span>Tono</span><input type="range" id="test-hue" min="0" max="359" value="200"></label>
+      <p class="hint">“Real” debería parecerse al original: si se ven manchas, falta o sobra máscara.</p>
+    </section>
+
+    <section>
+      <h2>Pregunta</h2>
+      <input id="short" type="text" placeholder="Nombre corto (p. ej. Luffy)">
+    </section>
+
+    <section class="actions">
+      <button type="button" class="primary" id="save">Guardar y siguiente <kbd>Enter</kbd></button>
+      <button type="button" id="skip">Saltar <kbd>Shift+Enter</kbd></button>
+      <button type="button" id="next">Siguiente <kbd>Av Pág</kbd></button>
+    </section>
+
+    <details>
+      <summary>Atajos</summary>
+      <p><kbd>W</kbd> varita · <kbd>A</kbd> SAM · <kbd>B</kbd> pincel · <kbd>E</kbd> goma · <kbd>I</kbd> cuentagotas</p>
+      <p><kbd>Rueda</kbd> zoom · <kbd>Espacio</kbd>+arrastrar o botón central: mover · <kbd>0</kbd> encajar · <kbd>H</kbd> ocultar capa</p>
+      <p><kbd>Re Pág</kbd>/<kbd>Av Pág</kbd> anterior/siguiente · <kbd>Ctrl+V</kbd> pegar imagen o URL · arrastrar un archivo para cambiar la imagen</p>
+    </details>
+  </aside>
+
+  <script src="annotate.js"></script>
+</body>
+</html>
